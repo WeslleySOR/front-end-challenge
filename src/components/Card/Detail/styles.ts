@@ -1,7 +1,7 @@
 import { styled } from "@stitches/react";
 
 export const Container = styled('div', {
-    width: '31rem',
+    width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
     gap: '6rem',
@@ -9,6 +9,7 @@ export const Container = styled('div', {
     border: '1px solid #E4E3E3',
     borderRadius: '0.8rem',
     boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.2)',
+    cursor: 'pointer',
     '> div': {
         display: 'flex',
         flexDirection: 'column',

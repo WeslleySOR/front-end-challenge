@@ -1,13 +1,13 @@
 import { ParkingType } from "../../../types/type";
 import { Container } from "./styles";
 
-interface CardDetailProps {
+interface CardDetailProps extends React.HTMLAttributes<HTMLDivElement>{
     plateInfo: ParkingType
 }
 
-export function CardDetail({ plateInfo }: CardDetailProps) {
+export function CardDetail({ plateInfo, ...props }: CardDetailProps) {
     return (
-        <Container>
+        <Container {...props}>
             <div>
                 <span>TEMPO ATUAL</span>
                 <span>{plateInfo.time}</span>

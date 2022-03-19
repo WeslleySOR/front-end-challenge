@@ -35,8 +35,8 @@ export function ComponentsViewer() {
                 <ButtonPurpleSecondary isActive>SAÍDA</ButtonPurpleSecondary>
             </div>
             <div>
-                <AbaButton>Entrada</AbaButton>
-                <AbaButton isActive>Saída</AbaButton>
+                <AbaButton link="/">Entrada</AbaButton>
+                <AbaButton link="/exit" isActive>Saída</AbaButton>
             </div>
             <NoBorderButton>Ver Histórico</NoBorderButton>
             <TextField value={plateNumber} setValue={setPlateNumber}/>

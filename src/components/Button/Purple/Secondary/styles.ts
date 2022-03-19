@@ -14,11 +14,12 @@ export const Container = styled('button', {
         isActive: {
             true: {
                 color: '#A769B2',
-                border: '2px solid #A769B2'
+                border: '2px solid #A769B2',
             },
             false: {
                 color: '#9B9B9B',
-                border: '2px solid #DADADA'
+                border: '2px solid #DADADA',
+                cursor: 'not-allowed'
             }
         }
     }

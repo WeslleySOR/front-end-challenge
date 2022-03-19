@@ -18,7 +18,8 @@ export const Container = styled('button', {
             },
             false: {
                 background: '#DADADA',
-                color: '#9B9B9B'
+                color: '#9B9B9B',
+                cursor: 'not-allowed'
             }
         }
     }
