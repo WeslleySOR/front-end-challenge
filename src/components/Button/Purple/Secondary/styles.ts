@@ -8,6 +8,8 @@ export const Container = styled('button', {
     fontWeight: 'bold',
     fontSize: '1.5rem',
     textAlign: 'center',
+
+    transition: 'border 0.2s, color 0.2s',
     variants: {
         isActive: {
             true: {

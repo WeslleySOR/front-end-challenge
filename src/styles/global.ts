@@ -6,22 +6,6 @@ export const globalStyles = globalCss({
         padding: 0,
         boxSizing: 'border-box',
     },
-    '#root': {
-        paddingBlock: '2rem',
-        '> div': {
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.5rem',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100vw',
-            height: '100vh',
-            'div': {
-                display: 'flex',
-                gap: '0.5rem'
-            }
-        }
-    },
     'body': {
         background: '#F2F2F2'
     },
