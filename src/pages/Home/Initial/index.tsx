@@ -5,14 +5,16 @@ import { Container } from "./style";
 
 interface InitialProps {
     plateNumber: string;
-    setPlateNumber: React.Dispatch<React.SetStateAction<string>>
+    setPlateNumber: React.Dispatch<React.SetStateAction<string>>;
+    registerPlate: () => Promise<void>
 }
 
-export function Initial({plateNumber, setPlateNumber}: InitialProps) {
+export function Initial({plateNumber, setPlateNumber, registerPlate}: InitialProps) {
+
     return (
         <Container>
             <TextField value={plateNumber} setValue={setPlateNumber}/>
-            <ButtonGreen isActive={plateNumber === '' ? false : true} style={{marginTop: '1.3rem'}}>CONFIRMAR ENTRADA</ButtonGreen>
+            <ButtonGreen onClick={registerPlate} isActive={plateNumber === '' ? false : true} style={{marginTop: '1.3rem'}}>CONFIRMAR ENTRADA</ButtonGreen>
         </Container>
     )
 }
