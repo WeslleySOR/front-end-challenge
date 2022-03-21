@@ -24,8 +24,8 @@ export function Initial({plateNumber, setPlateNumber, onOpenNewExitModal, onOpen
     return (
         <Container>
             <TextField value={plateNumber} setValue={setPlateNumber}/>
-            <ButtonPurplePrimary onClick={onOpenNewPaymentModal} isActive={plateNumber === '' ? false : true}>PAGAMENTO</ButtonPurplePrimary>
-            <ButtonPurpleSecondary onClick={onOpenNewExitModal} isActive={plateNumber === '' ? false : true}>SAÍDA</ButtonPurpleSecondary>
+            <ButtonPurplePrimary disabled={plateNumber !== '' ? false : true} onClick={onOpenNewPaymentModal} isActive={plateNumber === '' ? false : true}>PAGAMENTO</ButtonPurplePrimary>
+            <ButtonPurpleSecondary disabled={plateNumber !== '' ? false : true} onClick={onOpenNewExitModal} isActive={plateNumber === '' ? false : true}>SAÍDA</ButtonPurpleSecondary>
             <NoBorderButton onClick={() => navigateToPlateHistory()} style={{marginTop: '0.8rem'}}>VER HISTÓRICO</NoBorderButton>
         </Container>
     )

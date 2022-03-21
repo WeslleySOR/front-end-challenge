@@ -14,7 +14,7 @@ export function Initial({plateNumber, setPlateNumber, registerPlate}: InitialPro
     return (
         <Container>
             <TextField value={plateNumber} setValue={setPlateNumber}/>
-            <ButtonGreen onClick={registerPlate} isActive={plateNumber === '' ? false : true} style={{marginTop: '1.3rem'}}>CONFIRMAR ENTRADA</ButtonGreen>
+            <ButtonGreen disabled={plateNumber !== '' ? false : true} onClick={registerPlate} isActive={plateNumber === '' ? false : true} style={{marginTop: '1.3rem'}}>CONFIRMAR ENTRADA</ButtonGreen>
         </Container>
     )
 }

@@ -6,8 +6,11 @@ export const globalStyles = globalCss({
         padding: 0,
         boxSizing: 'border-box',
     },
+    '#root': {
+        maxWidth: '100vw'
+    },
     'body': {
-        background: '#F2F2F2'
+        background: '#F2F2F2',
     },
     'html': {
         fontSize: '62.5%',
