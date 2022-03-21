@@ -16,6 +16,7 @@ Modal.setAppElement('#root');
 
 function App() {
   globalStyles()
+  const [plateNumber, setPlateNumber] = useState('')
   const [isNewPaymentModalOpen, setIsNewPaymentModalOpen] = useState(false)
   const [isNewExitModalOpen, setIsNewExitModalOpen] = useState(false)
 
@@ -39,14 +40,14 @@ function App() {
       <Container>
         <NavigationBar/>
         <Routes>
-          <Route index element={<Home/>}/>
-          <Route path="/exit" element={<Exit onOpenNewPaymentModal={handleOpenNewPaymentModal} onOpenNewExitModal={handleOpenNewExitModal}/>}/>
+          <Route index element={<Home plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}/>
+          <Route path="/exit" element={<Exit plateNumber={plateNumber} setPlateNumber={setPlateNumber} onOpenNewPaymentModal={handleOpenNewPaymentModal} onOpenNewExitModal={handleOpenNewExitModal}/>}/>
           <Route path="/history/:id" element={<History/>}/>
           {/* <Route path="/2" element={<ComponentsViewer/>}/> */}
         </Routes>
       </Container>
-      <PaymentModal isOpen={isNewPaymentModalOpen} onRequestClose={handleCloseNewPaymentModal}/>
-      <ExitModal isOpen={isNewExitModalOpen} onRequestClose={handleCloseNewExitModal}/>
+      <PaymentModal plateNumber={plateNumber} isOpen={isNewPaymentModalOpen} onRequestClose={handleCloseNewPaymentModal}/>
+      <ExitModal plateNumber={plateNumber} isOpen={isNewExitModalOpen} onRequestClose={handleCloseNewExitModal}/>
     </BrowserRouter>
   )
 }

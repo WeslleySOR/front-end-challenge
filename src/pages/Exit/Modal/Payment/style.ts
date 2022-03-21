@@ -24,7 +24,8 @@ export const Container = styled(Modal, {
                 color: '#00BCD4',
                 fontSize: '3.8rem',
                 textAlign: 'center',
-                lineHeight: '4.5rem'
+                lineHeight: '4.5rem',
+                textTransform: 'uppercase'
             }
         }
     },

@@ -3,7 +3,12 @@ import { styled } from "@stitches/react";
 export const Container = styled('div', {
     display: 'flex',
     flexDirection: 'column',
-    padding: '36px  16px 64px 16px',
+    alignItems: 'center',
+    padding: '11.3rem 8.9rem',
+    'img': {
+        width: '7rem',
+        height: '7rem'
+    },
     'span': {
         marginTop: '14px',
         textAlign: 'center',

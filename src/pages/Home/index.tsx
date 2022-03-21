@@ -7,9 +7,12 @@ import { Success } from "./Success";
 import { api } from '../../services/api'
 import { ParkingType } from "../../types/type";
 
+interface HomeProps{
+    plateNumber: string;
+    setPlateNumber: React.Dispatch<React.SetStateAction<string>>;
+}
 
-export function Home() {
-    const [plateNumber, setPlateNumber] = useState('')
+export function Home({plateNumber, setPlateNumber}: HomeProps) {
 
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)

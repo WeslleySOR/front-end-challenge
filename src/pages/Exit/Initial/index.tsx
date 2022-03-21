@@ -10,14 +10,11 @@ interface InitialProps {
     plateNumber: string;
     setPlateNumber: React.Dispatch<React.SetStateAction<string>>
 
-    registerPlatePayment: () => Promise<void>;
-    registerPlateOut: () => Promise<void>
-
     onOpenNewExitModal: () => void;
     onOpenNewPaymentModal: () => void;
 }
 
-export function Initial({plateNumber, setPlateNumber, onOpenNewExitModal, onOpenNewPaymentModal, registerPlateOut, registerPlatePayment}: InitialProps) {
+export function Initial({plateNumber, setPlateNumber, onOpenNewExitModal, onOpenNewPaymentModal}: InitialProps) {
     let navigate = useNavigate()
     return (
         <Container>

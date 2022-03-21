@@ -1,11 +1,15 @@
 import { Container } from "./style";
 import loadingImage from '../../../assets/loading.svg'
 
-export function Loading() {
+interface LoadingProps {
+    value: string;
+}
+
+export function Loading({ value }: LoadingProps) {
     return(
         <Container>
             <img src={loadingImage} alt="Loading Image" />
-            <span>Registrando...</span>
+            <span>{value}</span>
         </Container>
     )
 }
