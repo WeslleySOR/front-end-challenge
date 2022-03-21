@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Initial } from "./Initial";
 import { Loading } from "./Loading";
 import { Container } from "./style";
@@ -7,12 +7,12 @@ import { Success } from "./Success";
 import { api } from '../../services/api'
 import { ParkingType } from "../../types/type";
 
+
 export function Home() {
     const [plateNumber, setPlateNumber] = useState('')
 
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
-
 
     const registerPlate = async() => {
         setLoading(true)
@@ -36,10 +36,12 @@ export function Home() {
         })
     }
     return (
+        <>
         <Container>
             {loading === false && success === false && <Initial registerPlate={registerPlate} plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}
             {loading === true && <Loading/>}
             {success === true && <Success/>}
         </Container>
+        </>
     )
 }

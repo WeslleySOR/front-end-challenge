@@ -12,15 +12,18 @@ interface InitialProps {
 
     registerPlatePayment: () => Promise<void>;
     registerPlateOut: () => Promise<void>
+
+    onOpenNewExitModal: () => void;
+    onOpenNewPaymentModal: () => void;
 }
 
-export function Initial({plateNumber, setPlateNumber, registerPlateOut, registerPlatePayment}: InitialProps) {
+export function Initial({plateNumber, setPlateNumber, onOpenNewExitModal, onOpenNewPaymentModal, registerPlateOut, registerPlatePayment}: InitialProps) {
     let navigate = useNavigate()
     return (
         <Container>
             <TextField value={plateNumber} setValue={setPlateNumber}/>
-            <ButtonPurplePrimary onClick={registerPlatePayment} isActive={plateNumber === '' ? false : true}>PAGAMENTO</ButtonPurplePrimary>
-            <ButtonPurpleSecondary onClick={registerPlateOut} isActive={plateNumber === '' ? false : true}>SAÍDA</ButtonPurpleSecondary>
+            <ButtonPurplePrimary onClick={onOpenNewPaymentModal} isActive={plateNumber === '' ? false : true}>PAGAMENTO</ButtonPurplePrimary>
+            <ButtonPurpleSecondary onClick={onOpenNewExitModal} isActive={plateNumber === '' ? false : true}>SAÍDA</ButtonPurpleSecondary>
             <NoBorderButton onClick={() => navigate(`/history/${plateNumber}`)} style={{marginTop: '0.8rem'}}>VER HISTÓRICO</NoBorderButton>
         </Container>
     )

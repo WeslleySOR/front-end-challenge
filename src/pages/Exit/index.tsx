@@ -6,7 +6,12 @@ import { Success } from "./Success";
 
 import { api } from '../../services/api'
 
-export function Exit() {
+interface ExitProps {
+    onOpenNewPaymentModal: () => void;
+    onOpenNewExitModal: () => void;
+}
+
+export function Exit({ onOpenNewExitModal, onOpenNewPaymentModal }: ExitProps) {
     const [plateNumber, setPlateNumber] = useState('')
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
@@ -49,7 +54,7 @@ export function Exit() {
 
     return (
         <Container>
-            {loading === false && success === false && <Initial registerPlateOut={registerPlateOut} registerPlatePayment={registerPlatePayment} plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}
+            {loading === false && success === false && <Initial onOpenNewPaymentModal={onOpenNewPaymentModal} onOpenNewExitModal={onOpenNewExitModal} registerPlateOut={registerPlateOut} registerPlatePayment={registerPlatePayment} plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}
             {loading === true && <Loading/>}
             {success === true && <Success/>}
         </Container>
