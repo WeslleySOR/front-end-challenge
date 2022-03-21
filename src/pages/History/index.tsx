@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { CardDetail } from "../../components/Card/Detail";
 import { ParkingType } from "../../types/type";
 import { Container, Content, DataContent, NavigationBar } from "./style";
@@ -26,7 +26,6 @@ export function History() {
             navigate('/exit')
         })
     }
-
     useEffect(() => {
         getPlateHistory(params.id ? params.id : 'aaa')
     },[])
@@ -44,7 +43,7 @@ export function History() {
                         </div>
                         <div>
                             <span>STATUS</span>
-                            <span>{data.left === true ? "Vazou" : "Estacionado"}</span>
+                            <span>{data.left === true ? "Saiu" : "Estacionado"}</span>
                         </div>
                         <div>
                             <span>TEMPO ATUAL</span>

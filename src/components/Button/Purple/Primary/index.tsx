@@ -8,7 +8,7 @@ interface ButtonPurplePrimaryProps extends React.ButtonHTMLAttributes<HTMLButton
 
 export function ButtonPurplePrimary({ isActive, children, ...props }: ButtonPurplePrimaryProps) {
     return(
-        <Container isActive={isActive ? isActive : false} {...props}>
+        <Container disabled={isActive ? false : isActive} isActive={isActive ? isActive : false} {...props}>
             {children}
         </Container>
     )

@@ -9,7 +9,7 @@ interface ButtonGreenProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
 export function ButtonGreen({ isActive, children, ...props }: ButtonGreenProps) {
     return(
         
-        <Container isActive={isActive ? isActive : false} {...props}>
+        <Container disabled={isActive ? false : isActive} isActive={isActive ? isActive : false} {...props}>
             {children}
         </Container>
     )

@@ -16,12 +16,17 @@ interface InitialProps {
 
 export function Initial({plateNumber, setPlateNumber, onOpenNewExitModal, onOpenNewPaymentModal}: InitialProps) {
     let navigate = useNavigate()
+
+    const navigateToPlateHistory = () => {
+        if(plateNumber !== '') navigate(`/history/${plateNumber}`)
+        else alert('Digite uma placa !')
+    }
     return (
         <Container>
             <TextField value={plateNumber} setValue={setPlateNumber}/>
             <ButtonPurplePrimary onClick={onOpenNewPaymentModal} isActive={plateNumber === '' ? false : true}>PAGAMENTO</ButtonPurplePrimary>
             <ButtonPurpleSecondary onClick={onOpenNewExitModal} isActive={plateNumber === '' ? false : true}>SAÍDA</ButtonPurpleSecondary>
-            <NoBorderButton onClick={() => navigate(`/history/${plateNumber}`)} style={{marginTop: '0.8rem'}}>VER HISTÓRICO</NoBorderButton>
+            <NoBorderButton onClick={() => navigateToPlateHistory()} style={{marginTop: '0.8rem'}}>VER HISTÓRICO</NoBorderButton>
         </Container>
     )
 }

@@ -8,7 +8,7 @@ interface ButtonPurpleSecondaryProps extends React.ButtonHTMLAttributes<HTMLButt
 
 export function ButtonPurpleSecondary({ isActive, children, ...props }: ButtonPurpleSecondaryProps) {
     return(
-        <Container isActive={isActive ? isActive : false} {...props}>
+        <Container disabled={isActive ? false : isActive} isActive={isActive ? isActive : false} {...props}>
             {children}
         </Container>
     )
