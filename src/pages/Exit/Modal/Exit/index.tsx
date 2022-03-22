@@ -22,7 +22,6 @@ export function ExitModal({isOpen, onRequestClose, plateNumber, setError}: ExitM
         setLoading(true)
         await api.post(`parking/${plateNumber}/out`, true)
         .then(data => {
-            console.log(data.data)
             setLoading(false)
             setSuccess(true)
             setTimeout(() => {

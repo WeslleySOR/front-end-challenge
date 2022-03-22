@@ -6,5 +6,9 @@ export const Container = styled('div', {
     background: '#FFFFFF',
     alignItems: 'center',
     width: '100%',
-    padding: '36px 16px 20px 16px'
+    padding: '36px 16px 20px 16px',
+    '@media (min-width: 768px)':{
+        justifyContent: 'center',
+        padding: '64px 16px',
+    },
 })

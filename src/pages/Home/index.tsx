@@ -28,7 +28,6 @@ export function Home({plateNumber, setPlateNumber, setExitError}: HomeProps) {
             plate: plateNumber
         } as ParkingType)
         .then(data => {
-            console.log(data.data)
             setLoading(false)
             setSuccess(true)
             setExitError('')

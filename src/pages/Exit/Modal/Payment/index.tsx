@@ -23,7 +23,6 @@ export function PaymentModal({isOpen, onRequestClose, plateNumber, setError}: Pa
         setLoading(true)
         await api.post(`parking/${plateNumber}/pay`, true)
         .then(data => {
-            console.log(data.data)
             setLoading(false)
             setSuccess(true)
             setTimeout(() => {

@@ -7,11 +7,24 @@ export const Container = styled('header', {
     paddingInline: '0.8rem',
     background: '#4DD0E1',
     minHeight: '6rem',
+    zIndex: '999999',
     'img.avatar-logo': {
         width: '4rem',
         height: '3rem',
         zIndex: '999999'
-    }
+    },
+    'img.avatar-logo-desktop': {
+        zIndex: '999999',
+        display: 'none'
+    },
+    '@media (min-width: 768px)':{
+        'img.avatar-logo-desktop': {
+            display: 'block'
+        },
+        'img.avatar-logo-mobile': {
+            display: 'none'
+        }
+    },
 })
 
 export const MenuButton = styled('button', {
@@ -19,7 +32,9 @@ export const MenuButton = styled('button', {
     background: 'none',
     display: 'flex',
     flexDirection: 'column',
-    zIndex: '999999',
+    '@media (min-width: 768px)':{
+        display: 'none'
+    },
     variants: {
         isOpened: {
             true: {

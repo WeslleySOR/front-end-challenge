@@ -7,11 +7,12 @@ import { NavigationBar } from "./components/NavigationBar"
 import { Exit } from "./pages/Exit"
 import { History } from "./pages/History"
 import { Home } from "./pages/Home"
-import { Container, Content, Main, Menu } from "./styles/app"
+import { Container, Content, Main } from "./styles/app"
 import { globalStyles } from "./styles/global"
 import { PaymentModal } from "./pages/Exit/Modal/Payment"
 import { ExitModal } from './pages/Exit/Modal/Exit';
 import { Header } from './components/Header';
+import { MobileMenu } from './components/Menu';
 
 Modal.setAppElement('#root');
 
@@ -59,10 +60,7 @@ function App() {
               {/* <Route path="/2" element={<ComponentsViewer/>}/> */}
             </Routes>
           </Main>
-          <Menu isOpened={isOpenedMenu}>
-            <button><span>Entrada</span></button>
-            <button><span>Saída</span></button>
-          </Menu>
+          <MobileMenu setIsOpenedMenu={setIsOpenedMenu} isOpened={isOpenedMenu}/>
         </Content>
       </Container>
       <PaymentModal setError={setExitError} plateNumber={plateNumber} isOpen={isNewPaymentModalOpen} onRequestClose={handleCloseNewPaymentModal}/>
