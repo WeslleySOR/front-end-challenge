@@ -10,12 +10,15 @@ import { ParkingType } from "../../types/type";
 interface HomeProps{
     plateNumber: string;
     setPlateNumber: React.Dispatch<React.SetStateAction<string>>;
+
+    setExitError: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export function Home({plateNumber, setPlateNumber}: HomeProps) {
+export function Home({plateNumber, setPlateNumber, setExitError}: HomeProps) {
 
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
+    const [error, setError] = useState('')
 
     const registerPlate = async() => {
         setLoading(true)
@@ -28,20 +31,22 @@ export function Home({plateNumber, setPlateNumber}: HomeProps) {
             console.log(data.data)
             setLoading(false)
             setSuccess(true)
+            setExitError('')
             setTimeout(() => {
                 setSuccess(false)
             }, 3000);
         })
         .catch(error => {
-            if(error.response.status === 422){
-                setLoading(false)
-            }
+            console.error(error)
+            setExitError('')
+            setLoading(false)
+            setError(/^([a-z]{3}-[0-9]{4})$/.test(plateNumber) ? 'Esse veiculo ja deu entrada!' : 'Essa placa é inválida!')
         })
     }
     return (
         <>
         <Container>
-            {loading === false && success === false && <Initial registerPlate={registerPlate} plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}
+            {loading === false && success === false && <Initial error={error} setError={setError} registerPlate={registerPlate} plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}
             {loading === true && <Loading/>}
             {success === true && <Success/>}
         </Container>

@@ -7,13 +7,14 @@ interface ExitProps {
     setPlateNumber: React.Dispatch<React.SetStateAction<string>>;
     onOpenNewPaymentModal: () => void;
     onOpenNewExitModal: () => void;
+    error: string;
+    setError: React.Dispatch<React.SetStateAction<string>>
 }
 
-export function Exit({ onOpenNewExitModal, onOpenNewPaymentModal, plateNumber, setPlateNumber }: ExitProps) {
-
+export function Exit({ onOpenNewExitModal, onOpenNewPaymentModal, plateNumber, setPlateNumber, error, setError }: ExitProps) {
     return (
         <Container>
-            <Initial onOpenNewPaymentModal={onOpenNewPaymentModal} onOpenNewExitModal={onOpenNewExitModal}  plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>
+            <Initial error={error} setError={setError} onOpenNewPaymentModal={onOpenNewPaymentModal} onOpenNewExitModal={onOpenNewExitModal}  plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>
         </Container>
     )
 }

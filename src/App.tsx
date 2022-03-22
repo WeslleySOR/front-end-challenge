@@ -22,12 +22,15 @@ function App() {
   const [isNewExitModalOpen, setIsNewExitModalOpen] = useState(false)
   const [isOpenedMenu, setIsOpenedMenu] = useState(false)
 
+  const [exitError, setExitError] = useState('')
+
   const handleOpenedButton = () => {
       setIsOpenedMenu(!isOpenedMenu)
   }
 
   function handleOpenNewPaymentModal() {
-    setIsNewPaymentModalOpen(true);
+    if(/^([a-z]{3}-[0-9]{4})$/.test(plateNumber)) setIsNewPaymentModalOpen(true);
+    else alert('Digite uma placa válida!\nex: AAA-0000')
   }
 
   function handleCloseNewPaymentModal() {
@@ -35,7 +38,8 @@ function App() {
   }
 
   function handleOpenNewExitModal() {
-    setIsNewExitModalOpen(true);
+    if(/^([a-z]{3}-[0-9]{4})$/.test(plateNumber)) setIsNewExitModalOpen(true);
+    else alert('Digite uma placa válida!\nex: AAA-0000')
   }
 
   function handleCloseNewExitModal() {
@@ -49,8 +53,8 @@ function App() {
           <Main isOpenedMenu={isOpenedMenu}>
             <NavigationBar/>
             <Routes>
-              <Route index element={<Home plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}/>
-              <Route path="/exit" element={<Exit plateNumber={plateNumber} setPlateNumber={setPlateNumber} onOpenNewPaymentModal={handleOpenNewPaymentModal} onOpenNewExitModal={handleOpenNewExitModal}/>}/>
+              <Route index element={<Home setExitError={setExitError} plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}/>
+              <Route path="/exit" element={<Exit error={exitError} setError={setExitError}  plateNumber={plateNumber} setPlateNumber={setPlateNumber} onOpenNewPaymentModal={handleOpenNewPaymentModal} onOpenNewExitModal={handleOpenNewExitModal}/>}/>
               <Route path="/history/:id" element={<History/>}/>
               {/* <Route path="/2" element={<ComponentsViewer/>}/> */}
             </Routes>
@@ -61,8 +65,8 @@ function App() {
           </Menu>
         </Content>
       </Container>
-      <PaymentModal plateNumber={plateNumber} isOpen={isNewPaymentModalOpen} onRequestClose={handleCloseNewPaymentModal}/>
-      <ExitModal plateNumber={plateNumber} isOpen={isNewExitModalOpen} onRequestClose={handleCloseNewExitModal}/>
+      <PaymentModal setError={setExitError} plateNumber={plateNumber} isOpen={isNewPaymentModalOpen} onRequestClose={handleCloseNewPaymentModal}/>
+      <ExitModal setError={setExitError} plateNumber={plateNumber} isOpen={isNewExitModalOpen} onRequestClose={handleCloseNewExitModal}/>
     </BrowserRouter>
   )
 }

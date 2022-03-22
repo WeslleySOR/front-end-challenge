@@ -6,7 +6,7 @@ export const Container = styled('header', {
     justifyContent: 'space-between',
     paddingInline: '0.8rem',
     background: '#4DD0E1',
-    height: '6rem',
+    minHeight: '6rem',
     'img.avatar-logo': {
         width: '4rem',
         height: '3rem',
@@ -29,12 +29,13 @@ export const MenuButton = styled('button', {
                         transition: 'transform 0.4s',
                         transform: 'translateY(0.3rem) rotate(-45deg)'
                     },
+                    '&.second-shape': {
+                        transition: 'transform 0.4s',
+                        transform: 'rotate(-45deg)'
+                    },
                     '&.third-shape': {
                         transition: 'transform 0.4s',
-                        transform: 'rotate(45deg)'
-                    },
-                    '&.second-shape': {
-                        display: 'none'
+                        transform: 'translateY(-0.3rem) rotate(45deg)'
                     },
                 }
             },
@@ -47,11 +48,12 @@ export const MenuButton = styled('button', {
                         transform: 'rotate(0deg) translateY(0rem)'
                     },
                     '&.second-shape': {
-                        display: 'block'
+                        transition: 'transform 0.4s',
+                        transform: 'rotate(0)'
                     },
                     '&.third-shape': {
                         transition: 'transform 0.4s',
-                        transform: 'rotate(0deg)'
+                        transform: 'rotate(0deg) translateY(0rem)'
                     }
                 }
             }

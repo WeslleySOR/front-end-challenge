@@ -11,9 +11,10 @@ interface ExitModalProps {
     isOpen: boolean; 
     onRequestClose: () => void;
     plateNumber: string;
+    setError: React.Dispatch<React.SetStateAction<string>>
 }
 
-export function ExitModal({isOpen, onRequestClose, plateNumber}: ExitModalProps) {
+export function ExitModal({isOpen, onRequestClose, plateNumber, setError}: ExitModalProps) {
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
 
@@ -26,12 +27,16 @@ export function ExitModal({isOpen, onRequestClose, plateNumber}: ExitModalProps)
             setSuccess(true)
             setTimeout(() => {
                 setSuccess(false)
+                setError('')
+            }, 3000)
+            setTimeout(() => {
+                onRequestClose()
             }, 3000)
         })
         .catch(error => {
-            if(error.response.status === 422){
-                setLoading(false)
-            }
+            setError('Esse veículo já saiu !')
+            setLoading(false)
+            onRequestClose()
         })
     }
     return(

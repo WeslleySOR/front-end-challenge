@@ -21,5 +21,23 @@ export const Container = styled('div', {
         '&::placeholder': {
             color: '#9B9B9B'
         }
+    },
+    '.error-box': {
+        display: 'flex',
+        gap: '1.2rem',
+        alignItems: 'center',
+        paddingInline: '1.2rem',
+        height: '3.2rem',
+        background: 'rgba(255, 23, 68, 0.15)',
+        borderRadius: '0.4rem'
+    },
+    variants: {
+        error: {
+            true: {
+                'input': {
+                    color: '#FF0068'
+                }
+            }
+        }
     }
 })
