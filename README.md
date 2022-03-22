@@ -1,3 +1,8 @@
+- Aplicação responsiva, feita do mobile first para o desktop.
+- Usei como base as dimensões mobile l, 425x570.
+- Hospedado na vercel, link: [Front End Challenge]([https://link](https://front-end-challenge-weslleysor.vercel.app/))
+
+
 # Como iniciar o projeto
 
 ###### 1 - Instale o Node.js, caso não tenha.
