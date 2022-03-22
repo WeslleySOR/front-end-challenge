@@ -8,9 +8,10 @@
 
 ###### 1 - Instale o Node.js, caso não tenha.
 ###### 2 - Instale o yarn via powershell com o comando: `npm install --global yarn`
-###### 3 - Verifique se o yarn foi instalado corretamente digitando: `yarn --version`
-###### 4 - Navegue até a pasta do projeto via powershell digitando: `cd <caminho até a pasta>`.
-###### 5 - Instale as dependencias do projeto digitando: `yarn`
-###### 5 - Para iniciar o projeto, digite `yarn dev`
-###### 6 - Por padrão o projeto fica hospedado em `http://localhost:3000/`
+###### 3 - Ainda no powershell, digite `Get-ExecutionPolicy`, caso retorne "Restricted", digite `Set-ExecutionPolicy RemoteSigned` e depois escolha a opção "A".
+###### 4 - Verifique se o yarn foi instalado corretamente digitando: `yarn --version`
+###### 5 - Navegue até a pasta do projeto via powershell digitando: `cd <caminho até a pasta>`.
+###### 6 - Instale as dependencias do **projeto** digitando: `yarn`
+###### 7 - Para iniciar o projeto, digite `yarn dev`
+###### 8 - Por padrão o projeto fica hospedado em `http://localhost:3000/`
 
