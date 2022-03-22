@@ -7,7 +7,7 @@ import { NavigationBar } from "./components/NavigationBar"
 import { Exit } from "./pages/Exit"
 import { History } from "./pages/History"
 import { Home } from "./pages/Home"
-import { Container, Main, Menu } from "./styles/app"
+import { Container, Content, Main, Menu } from "./styles/app"
 import { globalStyles } from "./styles/global"
 import { PaymentModal } from "./pages/Exit/Modal/Payment"
 import { ExitModal } from './pages/Exit/Modal/Exit';
@@ -45,19 +45,21 @@ function App() {
     <BrowserRouter>
       <Container>
         <Header handleOpenedButton={handleOpenedButton} isOpenedMenu={isOpenedMenu}/> 
-        <NavigationBar isOpenedMenu={isOpenedMenu}/>
-        <Main isOpenedMenu={isOpenedMenu}>
-          <Routes>
-            <Route index element={<Home plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}/>
-            <Route path="/exit" element={<Exit plateNumber={plateNumber} setPlateNumber={setPlateNumber} onOpenNewPaymentModal={handleOpenNewPaymentModal} onOpenNewExitModal={handleOpenNewExitModal}/>}/>
-            <Route path="/history/:id" element={<History/>}/>
-            {/* <Route path="/2" element={<ComponentsViewer/>}/> */}
-          </Routes>
-        </Main>
-        <Menu isOpened={isOpenedMenu}>
-          <button type='button'><span>Entrada</span></button>
-          <button type='button'><span>Saída</span></button>
-        </Menu>
+        <Content>
+          <Main isOpenedMenu={isOpenedMenu}>
+            <NavigationBar/>
+            <Routes>
+              <Route index element={<Home plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}/>
+              <Route path="/exit" element={<Exit plateNumber={plateNumber} setPlateNumber={setPlateNumber} onOpenNewPaymentModal={handleOpenNewPaymentModal} onOpenNewExitModal={handleOpenNewExitModal}/>}/>
+              <Route path="/history/:id" element={<History/>}/>
+              {/* <Route path="/2" element={<ComponentsViewer/>}/> */}
+            </Routes>
+          </Main>
+          <Menu isOpened={isOpenedMenu}>
+            <button><span>Entrada</span></button>
+            <button><span>Saída</span></button>
+          </Menu>
+        </Content>
       </Container>
       <PaymentModal plateNumber={plateNumber} isOpen={isNewPaymentModalOpen} onRequestClose={handleCloseNewPaymentModal}/>
       <ExitModal plateNumber={plateNumber} isOpen={isNewExitModalOpen} onRequestClose={handleCloseNewExitModal}/>

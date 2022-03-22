@@ -4,11 +4,15 @@ export const Container = styled('div', {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh'
+    height: '100vh',
+    overflowX: 'hidden'
+})
+
+export const Content = styled('div', {
 })
 
 export const Main = styled('main', {
-    display: 'flex',
+    width: '100%',
     variants: {
         isOpenedMenu: {
             false: {
@@ -17,13 +21,14 @@ export const Main = styled('main', {
             },
             true: {
                 transition: 'transform 0.6s',
-                transform: 'translateX(-100%)',
+                transform: 'translateX(-100%)'
             }
         }
     }
 })
 
 export const Menu = styled('div', {
+    width: '100%',
     position: 'absolute',
     top: '0',
     bottom: '0',
@@ -52,6 +57,7 @@ export const Menu = styled('div', {
                 transform: 'translateX(100%)'
             },
             true: {
+                display: 'flex',
                 transition: 'transform 0.6s',
                 transform: 'translateX(0)'
             }
