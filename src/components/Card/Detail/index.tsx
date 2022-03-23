@@ -10,7 +10,7 @@ export function CardDetail({ plateInfo, ...props }: CardDetailProps) {
         <Container {...props}>
             <div>
                 <span>TEMPO ATUAL</span>
-                <span>{plateInfo.time}</span>
+                <span>{plateInfo.time?.replace('days', 'dias').replace('hours', 'horas').replace('minutes', 'minutos').replace('seconds', 'segundos')}</span>
             </div>
             <div>
                 <span>PAGAMENTO</span>

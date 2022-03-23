@@ -47,7 +47,7 @@ export function History() {
                         </div>
                         <div>
                             <span>TEMPO ATUAL</span>
-                            <span>{data.time}</span>
+                            <span>{data.time?.replace('days', 'dias').replace('hours', 'horas').replace('minutes', 'minutos').replace('seconds', 'segundos')}</span>
                         </div>
                         <div>
                             <span>PAGAMENTO</span>
