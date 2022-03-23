@@ -31,5 +31,8 @@ export const Container = styled(Modal, {
     },
     'button': {
         width: '100%'
+    },
+    '@media (min-width: 768px)':{
+        width: '60%',
     }
 })
