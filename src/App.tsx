@@ -56,7 +56,7 @@ function App() {
             <Routes>
               <Route index element={<Home setExitError={setExitError} plateNumber={plateNumber} setPlateNumber={setPlateNumber}/>}/>
               <Route path="/exit" element={<Exit error={exitError} setError={setExitError}  plateNumber={plateNumber} setPlateNumber={setPlateNumber} onOpenNewPaymentModal={handleOpenNewPaymentModal} onOpenNewExitModal={handleOpenNewExitModal}/>}/>
-              <Route path="/history/:id" element={<History/>}/>
+              <Route path="/history/:id" element={<History setError={setExitError}/>}/>
               {/* <Route path="/2" element={<ComponentsViewer/>}/> */}
             </Routes>
           </Main>

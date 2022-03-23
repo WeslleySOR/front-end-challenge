@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CardDetail } from "../../components/Card/Detail";
 import { ParkingType } from "../../types/type";
 import { Container, Content, DataContent, NavigationBar } from "./style";
@@ -8,7 +8,11 @@ import { useEffect, useState } from "react";
 import { v4 as uuid } from 'uuid'
 import { api } from "../../services/api";
 
-export function History() {
+interface HistoryProps {
+    setError: React.Dispatch<React.SetStateAction<string>>
+}
+
+export function History({ setError }: HistoryProps) {
     const [plateHistory, setPlateHistory] = useState<ParkingType[]>()
     const [data, setData] = useState<ParkingType>()
     let navigate = useNavigate()
@@ -19,10 +23,12 @@ export function History() {
         .then(data => {
             if(data.data.length > 0) setPlateHistory(data.data)
             else{
+                setError('Esse veículo nao tem histórico !')
                 navigate('/exit')
             }
         })
-        .catch(() => {
+        .catch((error) => {
+            setError('Esse veículo nao tem histórico !')
             navigate('/exit')
         })
     }

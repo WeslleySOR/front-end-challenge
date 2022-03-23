@@ -3,7 +3,7 @@
 - Hospedado na vercel: 
 [Link do projeto](https://front-end-challenge-weslleysor.vercel.app/)
 
-
+****
 # Como iniciar o projeto
 
 ###### 1 - Instale o Node.js, caso não tenha.
@@ -15,3 +15,22 @@
 ###### 7 - Para iniciar o projeto, digite `yarn dev`
 ###### 8 - Por padrão o projeto fica hospedado em `http://localhost:3000/`
 
+****
+<details>
+  <summary>Algumas imagens demonstrando mensagens de erro !</summary>
+  
+  ###### Veículo já esta estacionado:
+  ![Veículo já esta estacionado](./.github/vehicleIn.png)
+
+  ###### Veículo já esta pago:
+  ![Veículo já esta pago](./.github/pago.png)
+
+  ###### Veículo já saiu:
+  ![Veículo já saiu](./.github/saiu.png)
+
+  ###### Placa inválida:
+  ![Placa inválida](./.github/invalid.png)
+
+  ###### Veículo nunca entrou nesse estacionamento:
+  ![Veículo nunca entrou nesse estacionamento](./.github/nohistory.png)  
+</details>
