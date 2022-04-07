@@ -6,10 +6,10 @@ import shapeImg from "../../assets/Shape.svg";
 
 interface HeaderProps {
 	isOpenedMenu: boolean;
-	handleOpenedButton: () => void;
+	handleOpenedMenu: () => void;
 }
 
-export function Header({ isOpenedMenu, handleOpenedButton }: HeaderProps) {
+export function Header({ isOpenedMenu, handleOpenedMenu }: HeaderProps) {
 	return (
 		<Container>
 			<img className="avatar-logo-mobile" src={avatarWhite} alt="Avatar logo" />
@@ -18,7 +18,7 @@ export function Header({ isOpenedMenu, handleOpenedButton }: HeaderProps) {
 				src={logoParking}
 				alt="Avatar logo"
 			/>
-			<MenuButton onClick={handleOpenedButton} isOpened={isOpenedMenu}>
+			<MenuButton onClick={handleOpenedMenu} isOpened={isOpenedMenu}>
 				<img className="first-shape" src={shapeImg} alt="" />
 				<img className="second-shape" src={shapeImg} alt="" />
 				<img className="third-shape" src={shapeImg} alt="" />

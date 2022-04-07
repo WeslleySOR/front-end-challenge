@@ -1,56 +1,45 @@
 import Modal from "react-modal";
-
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import { Container, Content, Main } from "./styles/app";
+import { globalStyles } from "./styles/global";
+
 import { NavigationBar } from "./components/NavigationBar";
+import { Header } from "./components/Header";
+import { MobileMenu } from "./components/Menu";
+
 import { Exit } from "./pages/Exit";
 import { History } from "./pages/History";
 import { Home } from "./pages/Home";
-import { Container, Content, Main } from "./styles/app";
-import { globalStyles } from "./styles/global";
 import { PaymentModal } from "./pages/Exit/Modal/Payment";
 import { ExitModal } from "./pages/Exit/Modal/Exit";
-import { Header } from "./components/Header";
-import { MobileMenu } from "./components/Menu";
+
+import { usePlate } from "./hooks/usePlate";
+import { useModal } from "./hooks/useModal";
+import { useMenu } from "./hooks/useMenu";
+import { useErrorMessage } from "./hooks/useErrorMessage";
 
 Modal.setAppElement("#root");
 
 function App() {
 	globalStyles();
-	const [plateNumber, setPlateNumber] = useState("");
-	const [isNewPaymentModalOpen, setIsNewPaymentModalOpen] = useState(false);
-	const [isNewExitModalOpen, setIsNewExitModalOpen] = useState(false);
-	const [isOpenedMenu, setIsOpenedMenu] = useState(false);
-
-	const [exitError, setExitError] = useState("");
-
-	const handleOpenedButton = () => {
-		setIsOpenedMenu(!isOpenedMenu);
-	};
-
-	function handleOpenNewPaymentModal() {
-		if (/^([a-z]{3}-[0-9]{4})$/.test(plateNumber))
-			setIsNewPaymentModalOpen(true);
-		else alert("Digite uma placa válida!\nex: AAA-0000");
-	}
-
-	function handleCloseNewPaymentModal() {
-		setIsNewPaymentModalOpen(false);
-	}
-
-	function handleOpenNewExitModal() {
-		if (/^([a-z]{3}-[0-9]{4})$/.test(plateNumber)) setIsNewExitModalOpen(true);
-		else alert("Digite uma placa válida!\nex: AAA-0000");
-	}
-
-	function handleCloseNewExitModal() {
-		setIsNewExitModalOpen(false);
-	}
+	const { plateNumber, setPlateNumber } = usePlate();
+	const {
+		isNewExitModalOpen,
+		isNewPaymentModalOpen,
+		handleOpenNewExitModal,
+		handleCloseNewExitModal,
+		handleOpenNewPaymentModal,
+		handleCloseNewPaymentModal,
+	} = useModal();
+	const { isOpenedMenu, handleOpenedMenu } = useMenu();
+	const { exitError, setExitError } = useErrorMessage();
 	return (
 		<BrowserRouter>
 			<Container>
 				<Header
-					handleOpenedButton={handleOpenedButton}
+					handleOpenedMenu={handleOpenedMenu}
 					isOpenedMenu={isOpenedMenu}
 				/>
 				<Content>
@@ -87,7 +76,7 @@ function App() {
 						</Routes>
 					</Main>
 					<MobileMenu
-						setIsOpenedMenu={setIsOpenedMenu}
+						handleOpenedMenu={handleOpenedMenu}
 						isOpened={isOpenedMenu}
 					/>
 				</Content>

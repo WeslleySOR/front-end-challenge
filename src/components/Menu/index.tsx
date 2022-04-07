@@ -2,16 +2,16 @@ import { useNavigate } from "react-router-dom";
 import { Container } from "./style";
 
 interface MobileMenuProps {
-	setIsOpenedMenu: React.Dispatch<React.SetStateAction<boolean>>;
+	handleOpenedMenu: () => void;
 	isOpened: boolean;
 }
 
-export function MobileMenu({ isOpened, setIsOpenedMenu }: MobileMenuProps) {
+export function MobileMenu({ isOpened, handleOpenedMenu }: MobileMenuProps) {
 	let navigate = useNavigate();
 
 	const handleMenuNavigate = (link: string) => {
 		navigate(link);
-		setIsOpenedMenu(false);
+		handleOpenedMenu();
 	};
 
 	return (
