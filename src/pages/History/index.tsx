@@ -58,7 +58,10 @@ export function History({ handleErrorMessage }: HistoryProps) {
 							<span>TEMPO ATUAL</span>
 							<span>
 								{data.time
-									?.replace("days", "dias")
+									?.replace("years", "anos")
+									.replace("months", "meses")
+									.replace("weeks", "semanas")
+									.replace("days", "dias")
 									.replace("hours", "horas")
 									.replace("minutes", "minutos")
 									.replace("seconds", "segundos")}

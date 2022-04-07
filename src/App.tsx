@@ -24,7 +24,7 @@ Modal.setAppElement("#root");
 
 function App() {
 	globalStyles();
-	const { plateNumber, setPlateNumber } = usePlate();
+	const { plateNumber, handlePlateNumber } = usePlate();
 	const {
 		isNewExitModalOpen,
 		isNewPaymentModalOpen,
@@ -53,7 +53,7 @@ function App() {
 										error={errorMessage}
 										handleErrorMessage={handleErrorMessage}
 										plateNumber={plateNumber}
-										setPlateNumber={setPlateNumber}
+										handlePlateNumber={handlePlateNumber}
 									/>
 								}
 							/>
@@ -64,7 +64,7 @@ function App() {
 										error={errorMessage}
 										handleErrorMessage={handleErrorMessage}
 										plateNumber={plateNumber}
-										setPlateNumber={setPlateNumber}
+										handlePlateNumber={handlePlateNumber}
 										onOpenNewPaymentModal={handleOpenNewPaymentModal}
 										onOpenNewExitModal={handleOpenNewExitModal}
 									/>

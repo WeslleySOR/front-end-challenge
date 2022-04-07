@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { regex } from "../utils/regex";
 
 import { usePlate } from "./usePlate";
 
@@ -9,9 +10,10 @@ export function useModal() {
 	const [isNewExitModalOpen, setIsNewExitModalOpen] = useState(false);
 
 	function handleOpenNewPaymentModal() {
-		if (/^([a-z]{3}-[0-9]{4})$/.test(plateNumber)) {
+		if (regex(plateNumber)) {
 			setIsNewPaymentModalOpen(true);
 		} else {
+			console.log(plateNumber)
 			alert("Digite uma placa válida!\nex: AAA-0000");
 		}
 	}
@@ -21,9 +23,10 @@ export function useModal() {
 	}
 
 	function handleOpenNewExitModal() {
-		if (/^([a-z]{3}-[0-9]{4})$/.test(plateNumber)) {
+		if (regex(plateNumber)) {
 			setIsNewExitModalOpen(true);
 		} else {
+			console.log(plateNumber)
 			alert("Digite uma placa válida!\nex: AAA-0000");
 		}
 	}

@@ -3,20 +3,20 @@ import { Container } from "./styles";
 import errorShape from "../../assets/error.svg";
 
 interface TextFieldProps {
-	value: string;
-	setValue: React.Dispatch<React.SetStateAction<string>>;
 	error: string;
-	handleErrorMessage: (newMessage: string) => void
+	plateNumber: string;
+	handlePlateNumber: (newPlateNumber: string) => void;
+	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function TextField({
-	value,
-	setValue,
 	error,
+	plateNumber,
 	handleErrorMessage,
+	handlePlateNumber,
 }: TextFieldProps) {
 	const handleInputText = (text: string) => {
-		setValue(text);
+		handlePlateNumber(text);
 		handleErrorMessage("");
 	};
 	return (
@@ -25,7 +25,7 @@ export function TextField({
 			<input
 				type="text"
 				placeholder="AAA-0000"
-				value={value}
+				value={plateNumber}
 				onChange={(e) => handleInputText(e.target.value)}
 			/>
 			{error !== "" && (

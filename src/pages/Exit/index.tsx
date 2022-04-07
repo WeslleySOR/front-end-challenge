@@ -3,7 +3,7 @@ import { Container } from "./style";
 
 interface ExitProps {
 	plateNumber: string;
-	setPlateNumber: React.Dispatch<React.SetStateAction<string>>;
+	handlePlateNumber: (newPlateNumber: string) => void
 	onOpenNewPaymentModal: () => void;
 	onOpenNewExitModal: () => void;
 	error: string;
@@ -14,7 +14,7 @@ export function Exit({
 	onOpenNewExitModal,
 	onOpenNewPaymentModal,
 	plateNumber,
-	setPlateNumber,
+	handlePlateNumber,
 	error,
 	handleErrorMessage,
 }: ExitProps) {
@@ -26,7 +26,7 @@ export function Exit({
 				onOpenNewPaymentModal={onOpenNewPaymentModal}
 				onOpenNewExitModal={onOpenNewExitModal}
 				plateNumber={plateNumber}
-				setPlateNumber={setPlateNumber}
+				handlePlateNumber={handlePlateNumber}
 			/>
 		</Container>
 	);

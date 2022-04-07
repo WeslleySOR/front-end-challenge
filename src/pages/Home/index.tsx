@@ -6,16 +6,21 @@ import { Success } from "./Success";
 
 import { api } from "../../services/api";
 import { ParkingType } from "../../types/type";
+import { regex } from "../../utils/regex";
 
 interface HomeProps {
+	error: string;
 	plateNumber: string;
-	setPlateNumber: React.Dispatch<React.SetStateAction<string>>;
-
-	error: string
-	handleErrorMessage: (newMessage: string) => void
+	handlePlateNumber: (newPlateNumber: string) => void;
+	handleErrorMessage: (newMessage: string) => void;
 }
 
-export function Home({ plateNumber, setPlateNumber, handleErrorMessage, error }: HomeProps) {
+export function Home({
+	plateNumber,
+	handlePlateNumber,
+	handleErrorMessage,
+	error,
+}: HomeProps) {
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
 
@@ -40,7 +45,7 @@ export function Home({ plateNumber, setPlateNumber, handleErrorMessage, error }:
 				handleErrorMessage("");
 				setLoading(false);
 				handleErrorMessage(
-					/^([a-z]{3}-[0-9]{4})$/.test(plateNumber)
+					regex(plateNumber)
 						? "Esse veiculo ja deu entrada!"
 						: "Essa placa é inválida!"
 				);
@@ -55,7 +60,7 @@ export function Home({ plateNumber, setPlateNumber, handleErrorMessage, error }:
 						handleErrorMessage={handleErrorMessage}
 						registerPlate={registerPlate}
 						plateNumber={plateNumber}
-						setPlateNumber={setPlateNumber}
+						handlePlateNumber={handlePlateNumber}
 					/>
 				)}
 				{loading === true && <Loading />}

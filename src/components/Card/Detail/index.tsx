@@ -12,7 +12,10 @@ export function CardDetail({ plateInfo, ...props }: CardDetailProps) {
 				<span>TEMPO ATUAL</span>
 				<span>
 					{plateInfo.time
-						?.replace("days", "dias")
+						?.replace("years", "anos")
+						.replace("months", "meses")
+						.replace("weeks", "semanas")
+						.replace("days", "dias")
 						.replace("hours", "horas")
 						.replace("minutes", "minutos")
 						.replace("seconds", "segundos")}

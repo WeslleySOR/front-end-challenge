@@ -4,16 +4,16 @@ import { TextField } from "../../../components/TextField";
 import { Container } from "./style";
 
 interface InitialProps {
-	plateNumber: string;
-	setPlateNumber: React.Dispatch<React.SetStateAction<string>>;
-	registerPlate: () => Promise<void>;
 	error: string;
-	handleErrorMessage: (newMessage: string) => void
+	plateNumber: string;
+	handlePlateNumber: (newPlateNumber: string) => void;
+	handleErrorMessage: (newMessage: string) => void;
+	registerPlate: () => Promise<void>;
 }
 
 export function Initial({
 	plateNumber,
-	setPlateNumber,
+	handlePlateNumber,
 	registerPlate,
 	error,
 	handleErrorMessage,
@@ -23,8 +23,8 @@ export function Initial({
 			<TextField
 				error={error}
 				handleErrorMessage={handleErrorMessage}
-				value={plateNumber}
-				setValue={setPlateNumber}
+				plateNumber={plateNumber}
+				handlePlateNumber={handlePlateNumber}
 			/>
 			<ButtonGreen
 				disabled={plateNumber !== "" ? false : true}

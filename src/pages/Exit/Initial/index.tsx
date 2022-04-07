@@ -4,11 +4,12 @@ import { NoBorderButton } from "../../../components/Button/NoBorder";
 import { ButtonPurplePrimary } from "../../../components/Button/Purple/Primary";
 import { ButtonPurpleSecondary } from "../../../components/Button/Purple/Secondary";
 import { TextField } from "../../../components/TextField";
+import { regex } from "../../../utils/regex";
 import { Container } from "./style";
 
 interface InitialProps {
 	plateNumber: string;
-	setPlateNumber: React.Dispatch<React.SetStateAction<string>>;
+	handlePlateNumber: (newPlateNumber: string) => void
 
 	onOpenNewExitModal: () => void;
 	onOpenNewPaymentModal: () => void;
@@ -19,7 +20,7 @@ interface InitialProps {
 
 export function Initial({
 	plateNumber,
-	setPlateNumber,
+	handlePlateNumber,
 	onOpenNewExitModal,
 	onOpenNewPaymentModal,
 	error,
@@ -28,9 +29,9 @@ export function Initial({
 	let navigate = useNavigate();
 
 	const navigateToPlateHistory = () => {
-		if (plateNumber !== "" && /^([a-z]{3}-[0-9]{4})$/.test(plateNumber))
+		if (plateNumber !== "" && regex(plateNumber))
 			navigate(`/history/${plateNumber}`);
-		else if (!/^([a-z]{3}-[0-9]{4})$/.test(plateNumber))
+		else if (!regex(plateNumber))
 			alert("Digite uma placa válida!\nex: AAA-0000");
 	};
 	return (
@@ -38,8 +39,8 @@ export function Initial({
 			<TextField
 				error={error}
 				handleErrorMessage={handleErrorMessage}
-				value={plateNumber}
-				setValue={setPlateNumber}
+				plateNumber={plateNumber}
+				handlePlateNumber={handlePlateNumber}
 			/>
 			<ButtonPurplePrimary
 				disabled={plateNumber !== "" ? false : true}
