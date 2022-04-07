@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { useState } from "react";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Container, Content, Main } from "./styles/app";
@@ -34,7 +34,7 @@ function App() {
 		handleCloseNewPaymentModal,
 	} = useModal();
 	const { isOpenedMenu, handleOpenedMenu } = useMenu();
-	const { exitError, setExitError } = useErrorMessage();
+	const { errorMessage, handleErrorMessage } = useErrorMessage();
 	return (
 		<BrowserRouter>
 			<Container>
@@ -50,7 +50,8 @@ function App() {
 								index
 								element={
 									<Home
-										setExitError={setExitError}
+										error={errorMessage}
+										handleErrorMessage={handleErrorMessage}
 										plateNumber={plateNumber}
 										setPlateNumber={setPlateNumber}
 									/>
@@ -60,8 +61,8 @@ function App() {
 								path="/exit"
 								element={
 									<Exit
-										error={exitError}
-										setError={setExitError}
+										error={errorMessage}
+										handleErrorMessage={handleErrorMessage}
 										plateNumber={plateNumber}
 										setPlateNumber={setPlateNumber}
 										onOpenNewPaymentModal={handleOpenNewPaymentModal}
@@ -71,7 +72,7 @@ function App() {
 							/>
 							<Route
 								path="/history/:id"
-								element={<History setError={setExitError} />}
+								element={<History handleErrorMessage={handleErrorMessage} />}
 							/>
 						</Routes>
 					</Main>
@@ -82,13 +83,13 @@ function App() {
 				</Content>
 			</Container>
 			<PaymentModal
-				setError={setExitError}
+				handleErrorMessage={handleErrorMessage}
 				plateNumber={plateNumber}
 				isOpen={isNewPaymentModalOpen}
 				onRequestClose={handleCloseNewPaymentModal}
 			/>
 			<ExitModal
-				setError={setExitError}
+				handleErrorMessage={handleErrorMessage}
 				plateNumber={plateNumber}
 				isOpen={isNewExitModalOpen}
 				onRequestClose={handleCloseNewExitModal}

@@ -9,10 +9,10 @@ import { v4 as uuid } from "uuid";
 import { api } from "../../services/api";
 
 interface HistoryProps {
-	setError: React.Dispatch<React.SetStateAction<string>>;
+	handleErrorMessage: (newMessage: string) => void
 }
 
-export function History({ setError }: HistoryProps) {
+export function History({ handleErrorMessage }: HistoryProps) {
 	const [plateHistory, setPlateHistory] = useState<ParkingType[]>();
 	const [data, setData] = useState<ParkingType>();
 	let navigate = useNavigate();
@@ -24,12 +24,12 @@ export function History({ setError }: HistoryProps) {
 			.then((data) => {
 				if (data.data.length > 0) setPlateHistory(data.data);
 				else {
-					setError("Esse veículo nao tem histórico !");
+					handleErrorMessage("Esse veículo nao tem histórico !");
 					navigate("/exit");
 				}
 			})
 			.catch((error) => {
-				setError("Esse veículo nao tem histórico !");
+				handleErrorMessage("Esse veículo nao tem histórico !");
 				navigate("/exit");
 			});
 	};

@@ -9,9 +9,11 @@ export function useModal() {
 	const [isNewExitModalOpen, setIsNewExitModalOpen] = useState(false);
 
 	function handleOpenNewPaymentModal() {
-		if (/^([a-z]{3}-[0-9]{4})$/.test(plateNumber))
+		if (/^([a-z]{3}-[0-9]{4})$/.test(plateNumber)) {
 			setIsNewPaymentModalOpen(true);
-		else alert("Digite uma placa válida!\nex: AAA-0000");
+		} else {
+			alert("Digite uma placa válida!\nex: AAA-0000");
+		}
 	}
 
 	function handleCloseNewPaymentModal() {
@@ -19,8 +21,11 @@ export function useModal() {
 	}
 
 	function handleOpenNewExitModal() {
-		if (/^([a-z]{3}-[0-9]{4})$/.test(plateNumber)) setIsNewExitModalOpen(true);
-		else alert("Digite uma placa válida!\nex: AAA-0000");
+		if (/^([a-z]{3}-[0-9]{4})$/.test(plateNumber)) {
+			setIsNewExitModalOpen(true);
+		} else {
+			alert("Digite uma placa válida!\nex: AAA-0000");
+		}
 	}
 
 	function handleCloseNewExitModal() {

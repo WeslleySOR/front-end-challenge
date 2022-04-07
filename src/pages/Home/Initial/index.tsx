@@ -8,7 +8,7 @@ interface InitialProps {
 	setPlateNumber: React.Dispatch<React.SetStateAction<string>>;
 	registerPlate: () => Promise<void>;
 	error: string;
-	setError: React.Dispatch<React.SetStateAction<string>>;
+	handleErrorMessage: (newMessage: string) => void
 }
 
 export function Initial({
@@ -16,13 +16,13 @@ export function Initial({
 	setPlateNumber,
 	registerPlate,
 	error,
-	setError,
+	handleErrorMessage,
 }: InitialProps) {
 	return (
 		<Container>
 			<TextField
 				error={error}
-				setError={setError}
+				handleErrorMessage={handleErrorMessage}
 				value={plateNumber}
 				setValue={setPlateNumber}
 			/>

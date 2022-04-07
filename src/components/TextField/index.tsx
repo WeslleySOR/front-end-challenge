@@ -6,18 +6,18 @@ interface TextFieldProps {
 	value: string;
 	setValue: React.Dispatch<React.SetStateAction<string>>;
 	error: string;
-	setError: React.Dispatch<React.SetStateAction<string>>;
+	handleErrorMessage: (newMessage: string) => void
 }
 
 export function TextField({
 	value,
 	setValue,
 	error,
-	setError,
+	handleErrorMessage,
 }: TextFieldProps) {
 	const handleInputText = (text: string) => {
 		setValue(text);
-		setError("");
+		handleErrorMessage("");
 	};
 	return (
 		<Container error={error !== ""}>

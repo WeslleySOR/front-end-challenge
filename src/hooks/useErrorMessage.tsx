@@ -1,7 +1,11 @@
 import { useState } from "react";
 
 export function useErrorMessage() {
-	const [exitError, setExitError] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 
-	return { exitError, setExitError };
+	const handleErrorMessage = (newMessage: string) => {
+		setErrorMessage(newMessage)
+	}
+
+	return { errorMessage, handleErrorMessage };
 }

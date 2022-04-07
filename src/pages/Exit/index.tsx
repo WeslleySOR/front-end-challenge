@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Initial } from "./Initial";
 import { Container } from "./style";
 
@@ -8,7 +7,7 @@ interface ExitProps {
 	onOpenNewPaymentModal: () => void;
 	onOpenNewExitModal: () => void;
 	error: string;
-	setError: React.Dispatch<React.SetStateAction<string>>;
+	handleErrorMessage: (newMessage: string) => void
 }
 
 export function Exit({
@@ -17,13 +16,13 @@ export function Exit({
 	plateNumber,
 	setPlateNumber,
 	error,
-	setError,
+	handleErrorMessage,
 }: ExitProps) {
 	return (
 		<Container>
 			<Initial
 				error={error}
-				setError={setError}
+				handleErrorMessage={handleErrorMessage}
 				onOpenNewPaymentModal={onOpenNewPaymentModal}
 				onOpenNewExitModal={onOpenNewExitModal}
 				plateNumber={plateNumber}

@@ -14,7 +14,7 @@ interface InitialProps {
 	onOpenNewPaymentModal: () => void;
 
 	error: string;
-	setError: React.Dispatch<React.SetStateAction<string>>;
+	handleErrorMessage: (newMessage: string) => void
 }
 
 export function Initial({
@@ -23,7 +23,7 @@ export function Initial({
 	onOpenNewExitModal,
 	onOpenNewPaymentModal,
 	error,
-	setError,
+	handleErrorMessage,
 }: InitialProps) {
 	let navigate = useNavigate();
 
@@ -37,7 +37,7 @@ export function Initial({
 		<Container>
 			<TextField
 				error={error}
-				setError={setError}
+				handleErrorMessage={handleErrorMessage}
 				value={plateNumber}
 				setValue={setPlateNumber}
 			/>

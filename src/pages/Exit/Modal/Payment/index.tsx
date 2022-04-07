@@ -12,14 +12,14 @@ interface PaymentModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
 	plateNumber: string;
-	setError: React.Dispatch<React.SetStateAction<string>>;
+	handleErrorMessage: (newMessage: string) => void
 }
 
 export function PaymentModal({
 	isOpen,
 	onRequestClose,
 	plateNumber,
-	setError,
+	handleErrorMessage,
 }: PaymentModalProps) {
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
@@ -33,14 +33,14 @@ export function PaymentModal({
 				setSuccess(true);
 				setTimeout(() => {
 					setSuccess(false);
-					setError("");
+					handleErrorMessage("");
 				}, 3000);
 				setTimeout(() => {
 					onRequestClose();
 				}, 3000);
 			})
 			.catch((error) => {
-				setError("Esse veículo já esta pago !");
+				handleErrorMessage("Esse veículo já esta pago !");
 				setLoading(false);
 				onRequestClose();
 			});
