@@ -7,29 +7,60 @@ import { TextField } from "../../../components/TextField";
 import { Container } from "./style";
 
 interface InitialProps {
-    plateNumber: string;
-    setPlateNumber: React.Dispatch<React.SetStateAction<string>>
+	plateNumber: string;
+	setPlateNumber: React.Dispatch<React.SetStateAction<string>>;
 
-    onOpenNewExitModal: () => void;
-    onOpenNewPaymentModal: () => void;
+	onOpenNewExitModal: () => void;
+	onOpenNewPaymentModal: () => void;
 
-    error: string;
-    setError: React.Dispatch<React.SetStateAction<string>>
+	error: string;
+	setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export function Initial({plateNumber, setPlateNumber, onOpenNewExitModal, onOpenNewPaymentModal, error, setError}: InitialProps) {
-    let navigate = useNavigate()
+export function Initial({
+	plateNumber,
+	setPlateNumber,
+	onOpenNewExitModal,
+	onOpenNewPaymentModal,
+	error,
+	setError,
+}: InitialProps) {
+	let navigate = useNavigate();
 
-    const navigateToPlateHistory = () => {
-        if(plateNumber !== '' && /^([a-z]{3}-[0-9]{4})$/.test(plateNumber)) navigate(`/history/${plateNumber}`)
-        else if(!/^([a-z]{3}-[0-9]{4})$/.test(plateNumber)) alert('Digite uma placa válida!\nex: AAA-0000')
-    }
-    return (
-        <Container>
-            <TextField error={error} setError={setError} value={plateNumber} setValue={setPlateNumber}/>
-            <ButtonPurplePrimary disabled={plateNumber !== '' ? false : true} onClick={onOpenNewPaymentModal} isActive={plateNumber === '' ? false : true}>PAGAMENTO</ButtonPurplePrimary>
-            <ButtonPurpleSecondary disabled={plateNumber !== '' ? false : true} onClick={onOpenNewExitModal} isActive={plateNumber === '' ? false : true}>SAÍDA</ButtonPurpleSecondary>
-            <NoBorderButton onClick={() => navigateToPlateHistory()} style={{marginTop: '0.8rem'}}>VER HISTÓRICO</NoBorderButton>
-        </Container>
-    )
+	const navigateToPlateHistory = () => {
+		if (plateNumber !== "" && /^([a-z]{3}-[0-9]{4})$/.test(plateNumber))
+			navigate(`/history/${plateNumber}`);
+		else if (!/^([a-z]{3}-[0-9]{4})$/.test(plateNumber))
+			alert("Digite uma placa válida!\nex: AAA-0000");
+	};
+	return (
+		<Container>
+			<TextField
+				error={error}
+				setError={setError}
+				value={plateNumber}
+				setValue={setPlateNumber}
+			/>
+			<ButtonPurplePrimary
+				disabled={plateNumber !== "" ? false : true}
+				onClick={onOpenNewPaymentModal}
+				isActive={plateNumber === "" ? false : true}
+			>
+				PAGAMENTO
+			</ButtonPurplePrimary>
+			<ButtonPurpleSecondary
+				disabled={plateNumber !== "" ? false : true}
+				onClick={onOpenNewExitModal}
+				isActive={plateNumber === "" ? false : true}
+			>
+				SAÍDA
+			</ButtonPurpleSecondary>
+			<NoBorderButton
+				onClick={() => navigateToPlateHistory()}
+				style={{ marginTop: "0.8rem" }}
+			>
+				VER HISTÓRICO
+			</NoBorderButton>
+		</Container>
+	);
 }
