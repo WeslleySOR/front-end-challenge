@@ -2,7 +2,7 @@ import { styled } from "@stitches/react";
 
 export const Container = styled("button", {
 	borderRadius: "0.4rem",
-	padding: "2.4rem 7.5rem",
+	paddingBlock: "2.4rem",
 	fontWeight: "bold",
 	fontSize: "1.5rem",
 	textAlign: "center",

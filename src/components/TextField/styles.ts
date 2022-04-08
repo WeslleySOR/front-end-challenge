@@ -10,7 +10,7 @@ export const Container = styled("div", {
 		color: "#9B9B9B",
 	},
 	input: {
-		padding: "1.7rem 10.3rem",
+		paddingBlock: "1.7rem",
 		border: "1px solid #CCCCCC",
 		borderRadius: "0.4rem",
 		textAlign: "center",
