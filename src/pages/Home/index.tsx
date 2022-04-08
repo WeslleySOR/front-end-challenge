@@ -25,6 +25,7 @@ export function Home({
 	const [success, setSuccess] = useState(false);
 
 	const registerPlate = async () => {
+		console.log(plateNumber)
 		setLoading(true);
 		await api
 			.post("parking", {

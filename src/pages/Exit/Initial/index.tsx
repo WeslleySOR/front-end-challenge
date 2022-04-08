@@ -11,8 +11,8 @@ interface InitialProps {
 	plateNumber: string;
 	handlePlateNumber: (newPlateNumber: string) => void
 
-	onOpenNewExitModal: () => void;
-	onOpenNewPaymentModal: () => void;
+	onOpenNewExitModal: (plateNumber: string) => void;
+	onOpenNewPaymentModal: (plateNumber: string) => void;
 
 	error: string;
 	handleErrorMessage: (newMessage: string) => void
@@ -44,14 +44,14 @@ export function Initial({
 			/>
 			<ButtonPurplePrimary
 				disabled={plateNumber !== "" ? false : true}
-				onClick={onOpenNewPaymentModal}
+				onClick={() => onOpenNewPaymentModal(plateNumber)}
 				isActive={plateNumber === "" ? false : true}
 			>
 				PAGAMENTO
 			</ButtonPurplePrimary>
 			<ButtonPurpleSecondary
 				disabled={plateNumber !== "" ? false : true}
-				onClick={onOpenNewExitModal}
+				onClick={() => onOpenNewExitModal(plateNumber)}
 				isActive={plateNumber === "" ? false : true}
 			>
 				SAÍDA

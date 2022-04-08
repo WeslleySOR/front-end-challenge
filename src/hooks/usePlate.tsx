@@ -4,8 +4,8 @@ export function usePlate() {
 	const [plateNumber, setPlateNumber] = useState("");
 
 	const handlePlateNumber = (newPlateNumber: string) => {
-		setPlateNumber(newPlateNumber)
-	}
+		setPlateNumber(newPlateNumber);
+	};
 
 	return { plateNumber, handlePlateNumber };
 }
