@@ -5,15 +5,11 @@ import { Container } from "./style";
 interface ExitProps {
 	plateNumber: string;
 	handlePlateNumber: (newPlateNumber: string) => void;
-	onOpenNewExitModal: (plateNumber: string) => void;
-	onOpenNewPaymentModal: (plateNumber: string) => void;
 	error: string;
 	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function Exit({
-	onOpenNewExitModal,
-	onOpenNewPaymentModal,
 	plateNumber,
 	handlePlateNumber,
 	error,
@@ -27,8 +23,6 @@ export function Exit({
 			<Initial
 				error={error}
 				handleErrorMessage={handleErrorMessage}
-				onOpenNewPaymentModal={onOpenNewPaymentModal}
-				onOpenNewExitModal={onOpenNewExitModal}
 				plateNumber={plateNumber}
 				handlePlateNumber={handlePlateNumber}
 			/>
