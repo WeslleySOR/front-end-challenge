@@ -1,5 +1,4 @@
-// import { registerPlate } from "../../../services/api";
-import { ButtonGreen } from "../../../components/Button/Green";
+import { StyledButton } from "../../../components/Button/Default";
 import { TextField } from "../../../components/TextField";
 import { Container } from "./style";
 
@@ -26,14 +25,13 @@ export function Initial({
 				plateNumber={plateNumber}
 				handlePlateNumber={handlePlateNumber}
 			/>
-			<ButtonGreen
-				disabled={plateNumber !== "" ? false : true}
+			<StyledButton
+				variant={plateNumber === "" ? "entrance" : "entrance_active"}
 				onClick={registerPlate}
-				isActive={plateNumber === "" ? false : true}
 				style={{ marginTop: "1.3rem" }}
 			>
 				CONFIRMAR ENTRADA
-			</ButtonGreen>
+			</StyledButton>
 		</Container>
 	);
 }

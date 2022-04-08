@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { NoBorderButton } from "../../../../components/Button/NoBorder";
-import { ButtonPurplePrimary } from "../../../../components/Button/Purple/Primary";
 import { Container } from "./style";
 
 import { api } from "../../../../services/api";
 import { Loading } from "../../Loading";
 import { Success } from "../../Success";
+import { StyledButton } from "../../../../components/Button/Default";
+import { StyledButtonLink } from "../../../../components/Button/Link";
 
 interface ExitModalProps {
 	isOpen: boolean;
@@ -50,7 +50,7 @@ export function ExitModal({
 			onRequestClose={onRequestClose}
 			className="react-modal-content"
 			overlayClassName="react-modal-overlay"
-			appElement={document.getElementById('root') || undefined}
+			appElement={document.getElementById("root") || undefined}
 		>
 			{loading === false && success === false && (
 				<>
@@ -58,10 +58,15 @@ export function ExitModal({
 						<span>Confirma a saída do veiculo da placa abaixo?</span>
 						<span>{plateNumber}</span>
 					</div>
-					<ButtonPurplePrimary onClick={registerPlateOut} isActive>
+					<StyledButton
+						variant={
+							plateNumber === "" ? "exit_primary" : "exit_primary_active"
+						}
+						onClick={registerPlateOut}
+					>
 						LIBERAR SAÍDA
-					</ButtonPurplePrimary>
-					<NoBorderButton onClick={onRequestClose}>VOLTAR</NoBorderButton>
+					</StyledButton>
+					<StyledButtonLink variant="no_border" onClick={onRequestClose}>VOLTAR</StyledButtonLink >
 				</>
 			)}
 			{loading === true && <Loading value="Confirmando..." />}

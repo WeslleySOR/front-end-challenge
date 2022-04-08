@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import { NoBorderButton } from "../../../../components/Button/NoBorder";
-import { ButtonPurplePrimary } from "../../../../components/Button/Purple/Primary";
 import { Container } from "./style";
 
 import { api } from "../../../../services/api";
 import { Loading } from "../../Loading";
 import { Success } from "../../Success";
+import { StyledButton } from "../../../../components/Button/Default";
+import { StyledButtonLink } from "../../../../components/Button/Link";
 
 interface PaymentModalProps {
 	isOpen: boolean;
@@ -59,10 +59,10 @@ export function PaymentModal({
 						<span>Confirma o pagamento da placa abaixo?</span>
 						<span>{plateNumber}</span>
 					</div>
-					<ButtonPurplePrimary onClick={registerPlatePayment} isActive>
+					<StyledButton variant={plateNumber === "" ? "exit_primary" : "exit_primary_active"} onClick={registerPlatePayment}>
 						CONFIRMAR
-					</ButtonPurplePrimary>
-					<NoBorderButton onClick={onRequestClose}>VOLTAR</NoBorderButton>
+					</StyledButton>
+					<StyledButtonLink variant="no_border" onClick={onRequestClose}>VOLTAR</StyledButtonLink>
 				</>
 			)}
 			{loading === true && <Loading value="Confirmando..." />}

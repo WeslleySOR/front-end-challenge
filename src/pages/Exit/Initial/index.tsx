@@ -1,8 +1,6 @@
-// import { registerPlate } from "../../../services/api";
 import { useNavigate } from "react-router-dom";
-import { NoBorderButton } from "../../../components/Button/NoBorder";
-import { ButtonPurplePrimary } from "../../../components/Button/Purple/Primary";
-import { ButtonPurpleSecondary } from "../../../components/Button/Purple/Secondary";
+import { StyledButton } from "../../../components/Button/Default";
+import { StyledButtonLink } from "../../../components/Button/Link";
 import { TextField } from "../../../components/TextField";
 import { regex } from "../../../utils/regex";
 import { Container } from "./style";
@@ -42,26 +40,25 @@ export function Initial({
 				plateNumber={plateNumber}
 				handlePlateNumber={handlePlateNumber}
 			/>
-			<ButtonPurplePrimary
-				disabled={plateNumber !== "" ? false : true}
+			<StyledButton
+				variant={plateNumber === "" ? "exit_primary" : "exit_primary_active"}
 				onClick={() => onOpenNewPaymentModal(plateNumber)}
-				isActive={plateNumber === "" ? false : true}
 			>
 				PAGAMENTO
-			</ButtonPurplePrimary>
-			<ButtonPurpleSecondary
-				disabled={plateNumber !== "" ? false : true}
+			</StyledButton>
+			<StyledButton
+				variant={plateNumber === "" ? "exit_secondary" : "exit_secondary_active"}
 				onClick={() => onOpenNewExitModal(plateNumber)}
-				isActive={plateNumber === "" ? false : true}
 			>
 				SAÍDA
-			</ButtonPurpleSecondary>
-			<NoBorderButton
+			</StyledButton>
+			<StyledButtonLink
+				variant="no_border"
 				onClick={() => navigateToPlateHistory()}
 				style={{ marginTop: "0.8rem" }}
 			>
 				VER HISTÓRICO
-			</NoBorderButton>
+			</StyledButtonLink>
 		</Container>
 	);
 }
