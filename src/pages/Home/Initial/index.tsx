@@ -23,7 +23,7 @@ export function Initial({
 			handleErrorMessage("")
 			registerPlate()
 		}else{
-			handleErrorMessage("O campo número da placa precisa estar preenchido.")
+			handleErrorMessage("Digite uma placa válida. ex: AAA-0000")
 		}
 	}
 

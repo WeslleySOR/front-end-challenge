@@ -47,7 +47,7 @@ export function Home({
 				handleErrorMessage(
 					regexToValidatePlateNumber(plateNumber)
 						? "Esse veiculo ja deu entrada!"
-						: "Essa placa é inválida!"
+						: "Digite uma placa válida. ex: AAA-0000"
 				);
 			});
 	};

@@ -51,6 +51,8 @@ export function ExitModal({
 			className="react-modal-content"
 			overlayClassName="react-modal-overlay"
 			appElement={document.getElementById("root") || undefined}
+			ariaHideApp={true}
+			portalClassName="ExitPlateModal"
 		>
 			{loading === false && success === false && (
 				<>

@@ -20,7 +20,7 @@ export const Container = styled("button", {
 				transition: "background 0.2s, color 0.2s",
 				background: "#28DD91",
 				color: "#FFFFFF",
-				cursor: "default",
+				cursor: "pointer",
 			},
 			exit_primary: {
 				border: "none",
@@ -34,7 +34,7 @@ export const Container = styled("button", {
 				transition: "background 0.2s, color 0.2s",
 				background: "#A769B2",
 				color: "#FFFFFF",
-				cursor: "default",
+				cursor: "pointer",
 			},
 			exit_secondary: {
 				background: "transparent",
@@ -48,7 +48,7 @@ export const Container = styled("button", {
 				transition: "border 0.2s, color 0.2s",
 				border: "2px solid #A769B2",
 				color: "#A769B2",
-				cursor: "default",
+				cursor: "pointer",
 			},
 		},
 	},

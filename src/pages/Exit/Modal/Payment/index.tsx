@@ -52,6 +52,8 @@ export function PaymentModal({
 			className="react-modal-content"
 			overlayClassName="react-modal-overlay"
 			appElement={document.getElementById('root') || undefined}
+			ariaHideApp={true}
+			portalClassName="PaymentPlateModal"
 		>
 			{loading === false && success === false && (
 				<>
