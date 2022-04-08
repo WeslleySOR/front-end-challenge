@@ -4,8 +4,8 @@ export function useErrorMessage() {
 	const [errorMessage, setErrorMessage] = useState("");
 
 	const handleErrorMessage = (newMessage: string) => {
-		setErrorMessage(newMessage)
-	}
+		setErrorMessage(newMessage);
+	};
 
 	return { errorMessage, handleErrorMessage };
 }

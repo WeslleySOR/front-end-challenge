@@ -68,7 +68,9 @@ export function ExitModal({
 					>
 						LIBERAR SAÍDA
 					</StyledButton>
-					<StyledButtonLink variant="no_border" onClick={onRequestClose}>VOLTAR</StyledButtonLink >
+					<StyledButtonLink variant="no_border" onClick={onRequestClose}>
+						VOLTAR
+					</StyledButtonLink>
 				</>
 			)}
 			{loading === true && <Loading value="Confirmando..." />}

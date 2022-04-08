@@ -7,6 +7,14 @@ interface StyledButtonLinkProps
 	children: ReactNode;
 }
 
-export function StyledButtonLink({ variant, children, ...props }: StyledButtonLinkProps) {
-	return <Container mode={variant} {...props}>{children}</Container>;
+export function StyledButtonLink({
+	variant,
+	children,
+	...props
+}: StyledButtonLinkProps) {
+	return (
+		<Container mode={variant} {...props}>
+			{children}
+		</Container>
+	);
 }

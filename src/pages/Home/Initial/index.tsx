@@ -17,15 +17,14 @@ export function Initial({
 	error,
 	handleErrorMessage,
 }: InitialProps) {
-
 	const handleOnClickButtonToRegisterPlate = () => {
-		if(plateNumber !== ""){
-			handleErrorMessage("")
-			registerPlate()
-		}else{
-			handleErrorMessage("Digite uma placa válida. ex: AAA-0000")
+		if (plateNumber !== "") {
+			handleErrorMessage("");
+			registerPlate();
+		} else {
+			handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
 		}
-	}
+	};
 
 	return (
 		<Container>

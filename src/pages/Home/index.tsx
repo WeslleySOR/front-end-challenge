@@ -53,8 +53,8 @@ export function Home({
 	};
 
 	useEffect(() => {
-		handleErrorMessage("")
-	},[])
+		handleErrorMessage("");
+	}, []);
 	return (
 		<>
 			<Container>

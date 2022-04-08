@@ -9,8 +9,18 @@ export function NavigationBar() {
 		<Container
 			isVisible={location.pathname.includes("/history") ? false : true}
 		>
-			<StyledButtonLink variant={location.pathname === ("/") ? "tab_active" : "tab"} onClick={() => navigate("/")}>Entrada</StyledButtonLink>
-			<StyledButtonLink variant={location.pathname === ("/exit") ? "tab_active" : "tab"} onClick={() => navigate("/exit")}>Saída</StyledButtonLink>
+			<StyledButtonLink
+				variant={location.pathname === "/" ? "tab_active" : "tab"}
+				onClick={() => navigate("/")}
+			>
+				Entrada
+			</StyledButtonLink>
+			<StyledButtonLink
+				variant={location.pathname === "/exit" ? "tab_active" : "tab"}
+				onClick={() => navigate("/exit")}
+			>
+				Saída
+			</StyledButtonLink>
 		</Container>
 	);
 }

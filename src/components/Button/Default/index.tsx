@@ -3,7 +3,13 @@ import { Container } from "./style";
 
 interface StyledButtonProps
 	extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	variant: "entrance" | "entrance_active" | "exit_primary" | "exit_primary_active" | "exit_secondary" | "exit_secondary_active";
+	variant:
+		| "entrance"
+		| "entrance_active"
+		| "exit_primary"
+		| "exit_primary_active"
+		| "exit_secondary"
+		| "exit_secondary_active";
 	children: ReactNode;
 }
 

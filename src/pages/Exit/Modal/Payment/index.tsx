@@ -51,7 +51,7 @@ export function PaymentModal({
 			onRequestClose={onRequestClose}
 			className="react-modal-content"
 			overlayClassName="react-modal-overlay"
-			appElement={document.getElementById('root') || undefined}
+			appElement={document.getElementById("root") || undefined}
 			ariaHideApp={true}
 			portalClassName="PaymentPlateModal"
 		>
@@ -61,10 +61,17 @@ export function PaymentModal({
 						<span>Confirma o pagamento da placa abaixo?</span>
 						<span>{plateNumber}</span>
 					</div>
-					<StyledButton variant={plateNumber === "" ? "exit_primary" : "exit_primary_active"} onClick={registerPlatePayment}>
+					<StyledButton
+						variant={
+							plateNumber === "" ? "exit_primary" : "exit_primary_active"
+						}
+						onClick={registerPlatePayment}
+					>
 						CONFIRMAR
 					</StyledButton>
-					<StyledButtonLink variant="no_border" onClick={onRequestClose}>VOLTAR</StyledButtonLink>
+					<StyledButtonLink variant="no_border" onClick={onRequestClose}>
+						VOLTAR
+					</StyledButtonLink>
 				</>
 			)}
 			{loading === true && <Loading value="Confirmando..." />}

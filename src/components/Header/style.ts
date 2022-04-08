@@ -34,7 +34,7 @@ export const MenuButton = styled("button", {
 	flexDirection: "column",
 	">img": {
 		width: "3.6rem",
-		height: "0.3rem"
+		height: "0.3rem",
 	},
 	"@media (min-width: 768px)": {
 		display: "none",

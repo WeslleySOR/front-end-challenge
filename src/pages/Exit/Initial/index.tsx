@@ -30,7 +30,7 @@ export function Initial({
 		if (plateNumber !== "" && regexToValidatePlateNumber(plateNumber))
 			navigate(`/history/${plateNumber}`);
 		else if (!regexToValidatePlateNumber(plateNumber))
-		handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
+			handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
 	};
 
 	const handleOnClickButtonToOpenPaymentModal = () => {
