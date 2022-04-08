@@ -40,7 +40,7 @@ export function ExitModal({
 			})
 			.catch(() => {
 				handleErrorMessage(
-					"Esse veículo já saiu, ou ainda não realizou pagamento!"
+					"Esse veículo já saiu, ou ainda nao realizou pagamento!"
 				);
 				setLoading(false);
 				onRequestClose();
