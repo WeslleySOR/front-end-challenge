@@ -13,13 +13,11 @@ import { Home } from "./pages/Home";
 
 import { usePlate } from "./hooks/usePlate";
 import { useMenu } from "./hooks/useMenu";
-import { useErrorMessage } from "./hooks/useErrorMessage";
 
 function App() {
 	globalStyles();
 	const { plateNumber, handlePlateNumber } = usePlate();
 	const { isOpenedMenu, handleOpenedMenu } = useMenu();
-	const { errorMessage, handleErrorMessage } = useErrorMessage();
 	return (
 		<BrowserRouter>
 			<Container>
@@ -35,8 +33,6 @@ function App() {
 								index
 								element={
 									<Home
-										error={errorMessage}
-										handleErrorMessage={handleErrorMessage}
 										plateNumber={plateNumber}
 										handlePlateNumber={handlePlateNumber}
 									/>
@@ -46,17 +42,12 @@ function App() {
 								path="/exit"
 								element={
 									<Exit
-										error={errorMessage}
-										handleErrorMessage={handleErrorMessage}
 										plateNumber={plateNumber}
 										handlePlateNumber={handlePlateNumber}
 									/>
 								}
 							/>
-							<Route
-								path="/history/:id"
-								element={<History handleErrorMessage={handleErrorMessage} />}
-							/>
+							<Route path="/history/:id" element={<History />} />
 						</Routes>
 					</Main>
 					<MobileMenu

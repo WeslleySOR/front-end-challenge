@@ -1,12 +1,11 @@
 import { StyledButton } from "../../../components/Button/Default";
 import { TextField } from "../../../components/TextField";
+import { useErrorMessage } from "../../../hooks/useErrorMessage";
 import { Container } from "./style";
 
 interface InitialProps {
-	error: string;
 	plateNumber: string;
 	handlePlateNumber: (newPlateNumber: string) => void;
-	handleErrorMessage: (newMessage: string) => void;
 	registerPlate: () => Promise<void>;
 }
 
@@ -14,9 +13,8 @@ export function Initial({
 	plateNumber,
 	handlePlateNumber,
 	registerPlate,
-	error,
-	handleErrorMessage,
 }: InitialProps) {
+	const { handleErrorMessage } = useErrorMessage();
 	const handleOnClickButtonToRegisterPlate = () => {
 		if (plateNumber !== "") {
 			handleErrorMessage("");
@@ -29,8 +27,6 @@ export function Initial({
 	return (
 		<Container>
 			<TextField
-				error={error}
-				handleErrorMessage={handleErrorMessage}
 				plateNumber={plateNumber}
 				handlePlateNumber={handlePlateNumber}
 			/>

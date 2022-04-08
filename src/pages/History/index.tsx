@@ -7,12 +7,10 @@ import arrowLeft from "../../assets/arrow_l.svg";
 import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { api } from "../../services/api";
+import { useErrorMessage } from "../../hooks/useErrorMessage";
 
-interface HistoryProps {
-	handleErrorMessage: (newMessage: string) => void;
-}
-
-export function History({ handleErrorMessage }: HistoryProps) {
+export function History() {
+	const { handleErrorMessage } = useErrorMessage();
 	const [plateHistory, setPlateHistory] = useState<ParkingType[]>();
 	const [data, setData] = useState<ParkingType>();
 	let navigate = useNavigate();
