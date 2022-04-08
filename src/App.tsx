@@ -1,5 +1,3 @@
-import Modal from "react-modal";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Container, Content, Main } from "./styles/app";
@@ -19,8 +17,6 @@ import { usePlate } from "./hooks/usePlate";
 import { useModal } from "./hooks/useModal";
 import { useMenu } from "./hooks/useMenu";
 import { useErrorMessage } from "./hooks/useErrorMessage";
-
-Modal.setAppElement("#root");
 
 function App() {
 	globalStyles();

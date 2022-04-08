@@ -12,7 +12,7 @@ interface PaymentModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
 	plateNumber: string;
-	handleErrorMessage: (newMessage: string) => void
+	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function PaymentModal({
@@ -51,6 +51,7 @@ export function PaymentModal({
 			onRequestClose={onRequestClose}
 			className="react-modal-content"
 			overlayClassName="react-modal-overlay"
+			appElement={document.getElementById('root') || undefined}
 		>
 			{loading === false && success === false && (
 				<>
