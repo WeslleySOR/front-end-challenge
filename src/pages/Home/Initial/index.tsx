@@ -17,6 +17,16 @@ export function Initial({
 	error,
 	handleErrorMessage,
 }: InitialProps) {
+
+	const handleOnClickButtonToRegisterPlate = () => {
+		if(plateNumber !== ""){
+			handleErrorMessage("")
+			registerPlate()
+		}else{
+			handleErrorMessage("O campo número da placa precisa estar preenchido.")
+		}
+	}
+
 	return (
 		<Container>
 			<TextField
@@ -27,7 +37,7 @@ export function Initial({
 			/>
 			<StyledButton
 				variant={plateNumber === "" ? "entrance" : "entrance_active"}
-				onClick={registerPlate}
+				onClick={handleOnClickButtonToRegisterPlate}
 				style={{ marginTop: "1.3rem" }}
 			>
 				CONFIRMAR ENTRADA

@@ -6,7 +6,7 @@ import { Success } from "./Success";
 
 import { api } from "../../services/api";
 import { ParkingType } from "../../types/type";
-import { regex } from "../../utils/regex";
+import { regexToValidatePlateNumber } from "../../utils/regex";
 
 interface HomeProps {
 	error: string;
@@ -45,7 +45,7 @@ export function Home({
 				handleErrorMessage("");
 				setLoading(false);
 				handleErrorMessage(
-					regex(plateNumber)
+					regexToValidatePlateNumber(plateNumber)
 						? "Esse veiculo ja deu entrada!"
 						: "Essa placa é inválida!"
 				);

@@ -2,18 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { StyledButton } from "../../../components/Button/Default";
 import { StyledButtonLink } from "../../../components/Button/Link";
 import { TextField } from "../../../components/TextField";
-import { regex } from "../../../utils/regex";
+import { regexToValidatePlateNumber } from "../../../utils/regex";
 import { Container } from "./style";
 
 interface InitialProps {
 	plateNumber: string;
-	handlePlateNumber: (newPlateNumber: string) => void
+	handlePlateNumber: (newPlateNumber: string) => void;
 
 	onOpenNewExitModal: (plateNumber: string) => void;
 	onOpenNewPaymentModal: (plateNumber: string) => void;
 
 	error: string;
-	handleErrorMessage: (newMessage: string) => void
+	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function Initial({
@@ -27,10 +27,28 @@ export function Initial({
 	let navigate = useNavigate();
 
 	const navigateToPlateHistory = () => {
-		if (plateNumber !== "" && regex(plateNumber))
+		if (plateNumber !== "" && regexToValidatePlateNumber(plateNumber))
 			navigate(`/history/${plateNumber}`);
-		else if (!regex(plateNumber))
-			alert("Digite uma placa válida!\nex: AAA-0000");
+		else if (!regexToValidatePlateNumber(plateNumber))
+		handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
+	};
+
+	const handleOnClickButtonToOpenPaymentModal = () => {
+		if (plateNumber !== "" && regexToValidatePlateNumber(plateNumber)) {
+			handleErrorMessage("");
+			onOpenNewPaymentModal(plateNumber);
+		} else {
+			handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
+		}
+	};
+
+	const handleOnClickButtonToOpenExitModal = () => {
+		if (plateNumber !== "" && regexToValidatePlateNumber(plateNumber)) {
+			handleErrorMessage("");
+			onOpenNewExitModal(plateNumber);
+		} else {
+			handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
+		}
 	};
 	return (
 		<Container>
@@ -42,19 +60,21 @@ export function Initial({
 			/>
 			<StyledButton
 				variant={plateNumber === "" ? "exit_primary" : "exit_primary_active"}
-				onClick={() => onOpenNewPaymentModal(plateNumber)}
+				onClick={handleOnClickButtonToOpenPaymentModal}
 			>
 				PAGAMENTO
 			</StyledButton>
 			<StyledButton
-				variant={plateNumber === "" ? "exit_secondary" : "exit_secondary_active"}
-				onClick={() => onOpenNewExitModal(plateNumber)}
+				variant={
+					plateNumber === "" ? "exit_secondary" : "exit_secondary_active"
+				}
+				onClick={handleOnClickButtonToOpenExitModal}
 			>
 				SAÍDA
 			</StyledButton>
 			<StyledButtonLink
 				variant="no_border"
-				onClick={() => navigateToPlateHistory()}
+				onClick={navigateToPlateHistory}
 				style={{ marginTop: "0.8rem" }}
 			>
 				VER HISTÓRICO

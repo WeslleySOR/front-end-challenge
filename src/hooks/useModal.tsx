@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { regex } from "../utils/regex";
+import { regexToValidatePlateNumber } from "../utils/regex";
 
 export function useModal() {
 
@@ -7,7 +7,7 @@ export function useModal() {
 	const [isNewExitModalOpen, setIsNewExitModalOpen] = useState(false);
 
 	const handleOpenNewPaymentModal = (plateNumber: string) => {
-		if (regex(plateNumber)) {
+		if (regexToValidatePlateNumber(plateNumber)) {
 			setIsNewPaymentModalOpen(true);
 		} else {
 			alert("Digite uma placa válida!\nex: AAA-0000");
@@ -19,7 +19,7 @@ export function useModal() {
 	}
 
 	const handleOpenNewExitModal = (plateNumber: string) => {
-		if (regex(plateNumber)) {
+		if (regexToValidatePlateNumber(plateNumber)) {
 			setIsNewExitModalOpen(true);
 		} else {
 			alert("Digite uma placa válida!\nex: AAA-0000");
