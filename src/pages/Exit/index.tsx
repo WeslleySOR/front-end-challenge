@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Initial } from "./Initial";
 import { Container } from "./style";
 
@@ -18,6 +19,9 @@ export function Exit({
 	error,
 	handleErrorMessage,
 }: ExitProps) {
+	useEffect(() => {
+		handleErrorMessage("")
+	},[])
 	return (
 		<Container>
 			<Initial

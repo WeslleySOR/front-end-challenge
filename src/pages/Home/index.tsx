@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Initial } from "./Initial";
 import { Loading } from "./Loading";
 import { Container } from "./style";
@@ -52,6 +52,10 @@ export function Home({
 				);
 			});
 	};
+
+	useEffect(() => {
+		handleErrorMessage("")
+	},[])
 	return (
 		<>
 			<Container>
