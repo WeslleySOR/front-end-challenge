@@ -40,7 +40,7 @@ export function PaymentModal({
 				}, 3000);
 			})
 			.catch((error) => {
-				handleErrorMessage("Esse veículo já esta pago !");
+				handleErrorMessage("Esse veículo já esta pago, ou já saiu do estacionamento.");
 				setLoading(false);
 				onRequestClose();
 			});
