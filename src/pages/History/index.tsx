@@ -9,7 +9,7 @@ import { v4 as uuid } from "uuid";
 import { api } from "../../services/api";
 
 interface HistoryProps {
-	handleErrorMessage: (newMessage: string) => void
+	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function History({ handleErrorMessage }: HistoryProps) {

@@ -4,11 +4,11 @@ import { Container } from "./style";
 
 interface ExitProps {
 	plateNumber: string;
-	handlePlateNumber: (newPlateNumber: string) => void
+	handlePlateNumber: (newPlateNumber: string) => void;
 	onOpenNewExitModal: (plateNumber: string) => void;
 	onOpenNewPaymentModal: (plateNumber: string) => void;
 	error: string;
-	handleErrorMessage: (newMessage: string) => void
+	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function Exit({
@@ -20,8 +20,8 @@ export function Exit({
 	handleErrorMessage,
 }: ExitProps) {
 	useEffect(() => {
-		handleErrorMessage("")
-	},[])
+		if (error !== "Esse veículo nao tem histórico !") handleErrorMessage("");
+	}, []);
 	return (
 		<Container>
 			<Initial
