@@ -6,7 +6,7 @@ export function useModal() {
 	const [isNewPaymentModalOpen, setIsNewPaymentModalOpen] = useState(false);
 	const [isNewExitModalOpen, setIsNewExitModalOpen] = useState(false);
 
-	function handleOpenNewPaymentModal(plateNumber: string) {
+	const handleOpenNewPaymentModal = (plateNumber: string) => {
 		if (regex(plateNumber)) {
 			setIsNewPaymentModalOpen(true);
 		} else {
@@ -14,11 +14,11 @@ export function useModal() {
 		}
 	}
 
-	function handleCloseNewPaymentModal() {
+	const handleCloseNewPaymentModal = () => {
 		setIsNewPaymentModalOpen(false);
 	}
 
-	function handleOpenNewExitModal(plateNumber: string) {
+	const handleOpenNewExitModal = (plateNumber: string) => {
 		if (regex(plateNumber)) {
 			setIsNewExitModalOpen(true);
 		} else {
@@ -26,7 +26,7 @@ export function useModal() {
 		}
 	}
 
-	function handleCloseNewExitModal() {
+	const handleCloseNewExitModal = () => {
 		setIsNewExitModalOpen(false);
 	}
 

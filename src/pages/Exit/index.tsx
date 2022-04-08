@@ -4,8 +4,8 @@ import { Container } from "./style";
 interface ExitProps {
 	plateNumber: string;
 	handlePlateNumber: (newPlateNumber: string) => void
-	onOpenNewPaymentModal: () => void;
-	onOpenNewExitModal: () => void;
+	onOpenNewExitModal: (plateNumber: string) => void;
+	onOpenNewPaymentModal: (plateNumber: string) => void;
 	error: string;
 	handleErrorMessage: (newMessage: string) => void
 }
