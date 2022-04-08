@@ -31,7 +31,7 @@ export const Container = styled("div", {
 		borderRadius: "0.4rem",
 		"> span": {
 			color: "#000",
-			wordBreak: 'break-all'
+			wordBreak: "break-all",
 		},
 	},
 	variants: {
