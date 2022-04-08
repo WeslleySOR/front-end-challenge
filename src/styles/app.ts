@@ -9,11 +9,15 @@ export const Container = styled("div", {
 	overflowX: "hidden",
 });
 
-export const Content = styled("div", {
+export const Content = styled("div", {	
 	"@media (min-width: 768px)": {
 		alignSelf: "center",
-		width: "75%",
+		width: "70%",
 	},
+	"@media (min-width: 1024px)": {
+		alignSelf: "center",
+		width: "60%",
+	}
 });
 
 export const Main = styled("main", {

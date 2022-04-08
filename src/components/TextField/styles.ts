@@ -26,12 +26,12 @@ export const Container = styled("div", {
 		display: "flex",
 		gap: "1.2rem",
 		alignItems: "center",
-		paddingInline: "1.2rem",
-		height: "3.2rem",
+		padding: "0.8rem 1.2rem",
 		background: "rgba(255, 23, 68, 0.15)",
 		borderRadius: "0.4rem",
 		"> span": {
 			color: "#000",
+			wordBreak: 'break-all'
 		},
 	},
 	variants: {
