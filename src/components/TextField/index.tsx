@@ -16,7 +16,9 @@ export function TextField({
 	handlePlateNumber,
 }: TextFieldProps) {
 	const handleInputText = (text: string) => {
-		handlePlateNumber(text);
+		handlePlateNumber(
+			text.length > 3 ? text.replace(/(\D{3})?(\D)/, "$1-$2") : text
+		);
 		handleErrorMessage("");
 	};
 	return (
@@ -30,7 +32,7 @@ export function TextField({
 			/>
 			{error !== "" && (
 				<div className="error-box">
-					<img src={errorShape} alt="" />
+					<img src={errorShape} alt="Error Message Icon" />
 					<span>{error}</span>
 				</div>
 			)}

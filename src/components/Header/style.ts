@@ -8,7 +8,7 @@ export const Container = styled("header", {
 	background: "#4DD0E1",
 	minHeight: "6rem",
 	zIndex: "999999",
-	"img.avatar-logo": {
+	"img.avatar-logo-mobile": {
 		width: "4rem",
 		height: "3rem",
 		zIndex: "999999",
@@ -32,6 +32,10 @@ export const MenuButton = styled("button", {
 	background: "none",
 	display: "flex",
 	flexDirection: "column",
+	">img": {
+		width: "3.6rem",
+		height: "0.3rem"
+	},
 	"@media (min-width: 768px)": {
 		display: "none",
 	},
