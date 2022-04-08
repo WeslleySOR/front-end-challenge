@@ -10,25 +10,14 @@ import { MobileMenu } from "./components/Menu";
 import { Exit } from "./pages/Exit";
 import { History } from "./pages/History";
 import { Home } from "./pages/Home";
-import { PaymentModal } from "./pages/Exit/Modal/Payment";
-import { ExitModal } from "./pages/Exit/Modal/Exit";
 
 import { usePlate } from "./hooks/usePlate";
-import { useModal } from "./hooks/useModal";
 import { useMenu } from "./hooks/useMenu";
 import { useErrorMessage } from "./hooks/useErrorMessage";
 
 function App() {
 	globalStyles();
 	const { plateNumber, handlePlateNumber } = usePlate();
-	const {
-		isNewExitModalOpen,
-		isNewPaymentModalOpen,
-		handleOpenNewExitModal,
-		handleCloseNewExitModal,
-		handleOpenNewPaymentModal,
-		handleCloseNewPaymentModal,
-	} = useModal();
 	const { isOpenedMenu, handleOpenedMenu } = useMenu();
 	const { errorMessage, handleErrorMessage } = useErrorMessage();
 	return (
@@ -61,8 +50,6 @@ function App() {
 										handleErrorMessage={handleErrorMessage}
 										plateNumber={plateNumber}
 										handlePlateNumber={handlePlateNumber}
-										onOpenNewPaymentModal={handleOpenNewPaymentModal}
-										onOpenNewExitModal={handleOpenNewExitModal}
 									/>
 								}
 							/>
@@ -78,18 +65,6 @@ function App() {
 					/>
 				</Content>
 			</Container>
-			<PaymentModal
-				handleErrorMessage={handleErrorMessage}
-				plateNumber={plateNumber}
-				isOpen={isNewPaymentModalOpen}
-				onRequestClose={handleCloseNewPaymentModal}
-			/>
-			<ExitModal
-				handleErrorMessage={handleErrorMessage}
-				plateNumber={plateNumber}
-				isOpen={isNewExitModalOpen}
-				onRequestClose={handleCloseNewExitModal}
-			/>
 		</BrowserRouter>
 	);
 }
