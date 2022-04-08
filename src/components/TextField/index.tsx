@@ -1,18 +1,20 @@
 import { Container } from "./styles";
 
 import errorShape from "../../assets/error.svg";
-import { useErrorMessage } from "../../hooks/useErrorMessage";
 
 interface TextFieldProps {
+	error: string;
 	plateNumber: string;
 	handlePlateNumber: (newPlateNumber: string) => void;
+	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function TextField({
+	error,
 	plateNumber,
+	handleErrorMessage,
 	handlePlateNumber,
 }: TextFieldProps) {
-	const { errorMessage, handleErrorMessage } = useErrorMessage();
 	const handleInputText = (text: string) => {
 		if (text.length <= 8) {
 			// Limitando a escrita da placa para 8 caracters
@@ -26,7 +28,7 @@ export function TextField({
 		handleErrorMessage("");
 	};
 	return (
-		<Container error={errorMessage !== ""}>
+		<Container error={error !== ""}>
 			<span>Número da placa:</span>
 			<input
 				type="text"
@@ -41,10 +43,10 @@ export function TextField({
 					}
 				}}
 			/>
-			{errorMessage !== "" && (
+			{error !== "" && (
 				<div className="error-box">
 					<img src={errorShape} alt="Error Message Icon" />
-					<span>{errorMessage}</span>
+					<span>{error}</span>
 				</div>
 			)}
 		</Container>

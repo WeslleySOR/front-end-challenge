@@ -7,18 +7,20 @@ import { Success } from "./Success";
 import { api } from "../../services/api";
 import { ParkingType } from "../../types/type";
 import { regexToValidatePlateNumber } from "../../utils/regex";
-import { useErrorMessage } from "../../hooks/useErrorMessage";
 
 interface HomeProps {
+	error: string;
 	plateNumber: string;
 	handlePlateNumber: (newPlateNumber: string) => void;
+	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function Home({
 	plateNumber,
 	handlePlateNumber,
+	handleErrorMessage,
+	error,
 }: HomeProps) {
-	const { handleErrorMessage } = useErrorMessage();
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
 
@@ -30,7 +32,7 @@ export function Home({
 				left: false,
 				plate: plateNumber,
 			} as ParkingType)
-			.then(() => {
+			.then((data) => {
 				setLoading(false);
 				setSuccess(true);
 				handleErrorMessage("");
@@ -58,6 +60,8 @@ export function Home({
 			<Container>
 				{loading === false && success === false && (
 					<Initial
+						error={error}
+						handleErrorMessage={handleErrorMessage}
 						registerPlate={registerPlate}
 						plateNumber={plateNumber}
 						handlePlateNumber={handlePlateNumber}

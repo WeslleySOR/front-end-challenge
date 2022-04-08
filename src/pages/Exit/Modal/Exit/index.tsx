@@ -6,20 +6,20 @@ import { Loading } from "../../Loading";
 import { Success } from "../../Success";
 import { StyledButton } from "../../../../components/Button/Default";
 import { StyledButtonLink } from "../../../../components/Button/Link";
-import { useErrorMessage } from "../../../../hooks/useErrorMessage";
 
 interface ExitModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
 	plateNumber: string;
+	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function ExitModal({
 	isOpen,
 	onRequestClose,
-	plateNumber
+	plateNumber,
+	handleErrorMessage,
 }: ExitModalProps) {
-	const { handleErrorMessage } = useErrorMessage();
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
 
