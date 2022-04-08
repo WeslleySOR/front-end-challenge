@@ -28,7 +28,7 @@ export function PaymentModal({
 		setLoading(true);
 		await api
 			.post(`parking/${plateNumber}/pay`, true)
-			.then((data) => {
+			.then(() => {
 				setLoading(false);
 				setSuccess(true);
 				setTimeout(() => {
@@ -39,8 +39,10 @@ export function PaymentModal({
 					onRequestClose();
 				}, 3000);
 			})
-			.catch((error) => {
-				handleErrorMessage("Esse veículo já esta pago !");
+			.catch(() => {
+				handleErrorMessage(
+					"Esse veículo já esta pago, ou já saiu do estacionamento."
+				);
 				setLoading(false);
 				onRequestClose();
 			});

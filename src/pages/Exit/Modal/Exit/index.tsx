@@ -27,7 +27,7 @@ export function ExitModal({
 		setLoading(true);
 		await api
 			.post(`parking/${plateNumber}/out`, true)
-			.then((data) => {
+			.then(() => {
 				setLoading(false);
 				setSuccess(true);
 				setTimeout(() => {
@@ -38,8 +38,10 @@ export function ExitModal({
 					onRequestClose();
 				}, 3000);
 			})
-			.catch((error) => {
-				handleErrorMessage("Esse veículo já saiu !");
+			.catch(() => {
+				handleErrorMessage(
+					"Esse veículo já saiu, ou ainda não realizou pagamento!"
+				);
 				setLoading(false);
 				onRequestClose();
 			});
