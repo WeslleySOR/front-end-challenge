@@ -7,19 +7,19 @@ import { Success } from "../../Success";
 import { StyledButton } from "../../../../components/Button/Default";
 import { StyledButtonLink } from "../../../../components/Button/Link";
 import { PlateContext } from "../../../../contexts/Plate";
+import { ErrorContext } from "../../../../contexts/Error";
 
 interface ExitModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
-	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function ExitModal({
 	isOpen,
-	onRequestClose,
-	handleErrorMessage,
+	onRequestClose
 }: ExitModalProps) {
 	const { plate } = useContext(PlateContext)
+	const { updateError } = useContext(ErrorContext)
 
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
@@ -33,14 +33,14 @@ export function ExitModal({
 				setSuccess(true);
 				setTimeout(() => {
 					setSuccess(false);
-					handleErrorMessage("");
+					updateError("");
 				}, 3000);
 				setTimeout(() => {
 					onRequestClose();
 				}, 3000);
 			})
 			.catch(() => {
-				handleErrorMessage(
+				updateError(
 					"Esse veículo já saiu, ou ainda não realizou pagamento!"
 				);
 				setLoading(false);

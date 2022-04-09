@@ -8,17 +8,11 @@ import { api } from "../../services/api";
 import { ParkingType } from "../../types/type";
 import { regexToValidatePlateNumber } from "../../utils/regex";
 import { PlateContext } from "../../contexts/Plate";
+import { ErrorContext } from "../../contexts/Error";
 
-interface HomeProps {
-	error: string;
-	handleErrorMessage: (newMessage: string) => void;
-}
-
-export function Home({
-	handleErrorMessage,
-	error,
-}: HomeProps) {
-	const { plate } = useContext(PlateContext)
+export function Home() {
+	const { plate } = useContext(PlateContext);
+	const { updateError } = useContext(ErrorContext);
 
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
@@ -34,16 +28,16 @@ export function Home({
 			.then((data) => {
 				setLoading(false);
 				setSuccess(true);
-				handleErrorMessage("");
+				updateError("");
 				setTimeout(() => {
 					setSuccess(false);
 				}, 3000);
 			})
 			.catch((e) => {
 				console.error(e);
-				handleErrorMessage("");
+				updateError("");
 				setLoading(false);
-				handleErrorMessage(
+				updateError(
 					regexToValidatePlateNumber(plate)
 						? "Esse veiculo ja deu entrada!"
 						: "Digite uma placa válida. ex: AAA-0000"
@@ -52,17 +46,13 @@ export function Home({
 	};
 
 	useEffect(() => {
-		handleErrorMessage("");
+		updateError("");
 	}, []);
 	return (
 		<>
 			<Container>
 				{loading === false && success === false && (
-					<Initial
-						error={error}
-						handleErrorMessage={handleErrorMessage}
-						registerPlate={registerPlate}
-					/>
+					<Initial registerPlate={registerPlate} />
 				)}
 				{loading === true && <Loading />}
 				{success === true && <Success />}

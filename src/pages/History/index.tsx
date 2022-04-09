@@ -4,15 +4,14 @@ import { ParkingType } from "../../types/type";
 import { Container, Content, DataContent, NavigationBar } from "./style";
 
 import arrowLeft from "../../assets/arrow_l.svg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { api } from "../../services/api";
+import { ErrorContext } from "../../contexts/Error";
 
-interface HistoryProps {
-	handleErrorMessage: (newMessage: string) => void;
-}
 
-export function History({ handleErrorMessage }: HistoryProps) {
+export function History() {
+	const { updateError } = useContext(ErrorContext)
 	const [plateHistory, setPlateHistory] = useState<ParkingType[]>();
 	const [data, setData] = useState<ParkingType>();
 	let navigate = useNavigate();
@@ -24,12 +23,12 @@ export function History({ handleErrorMessage }: HistoryProps) {
 			.then((data) => {
 				if (data.data.length > 0) setPlateHistory(data.data);
 				else {
-					handleErrorMessage("Esse veículo nao tem histórico !");
+					updateError("Esse veículo nao tem histórico !");
 					navigate("/exit");
 				}
 			})
 			.catch(() => {
-				handleErrorMessage("Esse veículo nao tem histórico !");
+				updateError("Esse veículo nao tem histórico !");
 				navigate("/exit");
 			});
 	};

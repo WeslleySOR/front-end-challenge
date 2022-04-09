@@ -1,25 +1,16 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { ErrorContext } from "../../contexts/Error";
 import { Initial } from "./Initial";
 import { Container } from "./style";
 
-interface ExitProps {
-	error: string;
-	handleErrorMessage: (newMessage: string) => void;
-}
-
-export function Exit({
-	error,
-	handleErrorMessage,
-}: ExitProps) {
+export function Exit() {
+	const { error, updateError } = useContext(ErrorContext)
 	useEffect(() => {
-		if (error !== "Esse veículo nao tem histórico !") handleErrorMessage("");
+		if (error !== "Esse veículo nao tem histórico !") updateError("");
 	}, []);
 	return (
 		<Container>
-			<Initial
-				error={error}
-				handleErrorMessage={handleErrorMessage}
-			/>
+			<Initial />
 		</Container>
 	);
 }

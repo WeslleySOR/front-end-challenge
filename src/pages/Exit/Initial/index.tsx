@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { StyledButton } from "../../../components/Button/Default";
 import { StyledButtonLink } from "../../../components/Button/Link";
 import { TextField } from "../../../components/TextField";
+import { ErrorContext } from "../../../contexts/Error";
 import { PlateContext } from "../../../contexts/Plate";
 import { useModal } from "../../../hooks/useModal";
 import { regexToValidatePlateNumber } from "../../../utils/regex";
@@ -10,16 +11,9 @@ import { ExitModal } from "../Modal/Exit";
 import { PaymentModal } from "../Modal/Payment";
 import { Container } from "./style";
 
-interface InitialProps {
-	error: string;
-	handleErrorMessage: (newMessage: string) => void;
-}
-
-export function Initial({
-	error,
-	handleErrorMessage,
-}: InitialProps) {
+export function Initial() {
 	const { plate, updatePlate } = useContext(PlateContext)
+	const { updateError } = useContext(ErrorContext)
 
 	const {
 		handleOpenNewExitModal,
@@ -35,32 +29,31 @@ export function Initial({
 		if (plate !== "" && regexToValidatePlateNumber(plate))
 			navigate(`/history/${plate}`);
 		else if (!regexToValidatePlateNumber(plate))
-			handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
+			updateError("Digite uma placa válida. ex: AAA-0000");
 	};
 
 	const handleOnClickButtonToOpenPaymentModal = () => {
 		if (plate !== "" && regexToValidatePlateNumber(plate)) {
-			handleErrorMessage("");
+			updateError("");
 			handleOpenNewPaymentModal(plate);
 		} else {
-			handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
+			updateError("Digite uma placa válida. ex: AAA-0000");
 		}
 	};
 
 	const handleOnClickButtonToOpenExitModal = () => {
 		if (plate !== "" && regexToValidatePlateNumber(plate)) {
-			handleErrorMessage("");
+			updateError("");
 			handleOpenNewExitModal(plate);
 		} else {
-			handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
+			updateError("Digite uma placa válida. ex: AAA-0000");
 		}
 	};
 	return (
 		<>
 			<Container>
 				<TextField
-					error={error}
-					handleErrorMessage={handleErrorMessage}
+					handleErrorMessage={updateError}
 					handlePlateNumber={updatePlate}
 				/>
 				<StyledButton
@@ -86,12 +79,10 @@ export function Initial({
 				</StyledButtonLink>
 			</Container>
 			<PaymentModal
-				handleErrorMessage={handleErrorMessage}
 				isOpen={isNewPaymentModalOpen}
 				onRequestClose={handleCloseNewPaymentModal}
 			/>
 			<ExitModal
-				handleErrorMessage={handleErrorMessage}
 				isOpen={isNewExitModalOpen}
 				onRequestClose={handleCloseNewExitModal}
 			/>

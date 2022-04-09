@@ -8,19 +8,19 @@ import { Success } from "../../Success";
 import { StyledButton } from "../../../../components/Button/Default";
 import { StyledButtonLink } from "../../../../components/Button/Link";
 import { PlateContext } from "../../../../contexts/Plate";
+import { ErrorContext } from "../../../../contexts/Error";
 
 interface PaymentModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
-	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function PaymentModal({
 	isOpen,
-	onRequestClose,
-	handleErrorMessage,
+	onRequestClose
 }: PaymentModalProps) {
 	const { plate } = useContext(PlateContext);
+	const { updateError } = useContext(ErrorContext)
 
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
@@ -34,14 +34,14 @@ export function PaymentModal({
 				setSuccess(true);
 				setTimeout(() => {
 					setSuccess(false);
-					handleErrorMessage("");
+					updateError("");
 				}, 3000);
 				setTimeout(() => {
 					onRequestClose();
 				}, 3000);
 			})
 			.catch(() => {
-				handleErrorMessage(
+				updateError(
 					"Esse veículo já esta pago, ou já saiu do estacionamento."
 				);
 				setLoading(false);
