@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Container } from "./style";
 
 import { api } from "../../../../services/api";
@@ -6,27 +6,28 @@ import { Loading } from "../../Loading";
 import { Success } from "../../Success";
 import { StyledButton } from "../../../../components/Button/Default";
 import { StyledButtonLink } from "../../../../components/Button/Link";
+import { PlateContext } from "../../../../contexts/Plate";
 
 interface ExitModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
-	plateNumber: string;
 	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function ExitModal({
 	isOpen,
 	onRequestClose,
-	plateNumber,
 	handleErrorMessage,
 }: ExitModalProps) {
+	const { plate } = useContext(PlateContext)
+
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
 
 	const registerPlateOut = async () => {
 		setLoading(true);
 		await api
-			.post(`parking/${plateNumber}/out`, true)
+			.post(`parking/${plate}/out`, true)
 			.then(() => {
 				setLoading(false);
 				setSuccess(true);
@@ -60,11 +61,11 @@ export function ExitModal({
 				<>
 					<div className="box-info">
 						<span>Confirma a saída do veiculo da placa abaixo?</span>
-						<span>{plateNumber}</span>
+						<span>{plate}</span>
 					</div>
 					<StyledButton
 						variant={
-							plateNumber === "" ? "exit_primary" : "exit_primary_active"
+							plate === "" ? "exit_primary" : "exit_primary_active"
 						}
 						onClick={registerPlateOut}
 					>

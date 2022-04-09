@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledButton } from "../../../components/Button/Default";
 import { StyledButtonLink } from "../../../components/Button/Link";
 import { TextField } from "../../../components/TextField";
+import { PlateContext } from "../../../contexts/Plate";
 import { useModal } from "../../../hooks/useModal";
 import { regexToValidatePlateNumber } from "../../../utils/regex";
 import { ExitModal } from "../Modal/Exit";
@@ -9,18 +11,16 @@ import { PaymentModal } from "../Modal/Payment";
 import { Container } from "./style";
 
 interface InitialProps {
-	plateNumber: string;
-	handlePlateNumber: (newPlateNumber: string) => void;
 	error: string;
 	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function Initial({
-	plateNumber,
-	handlePlateNumber,
 	error,
 	handleErrorMessage,
 }: InitialProps) {
+	const { plate, updatePlate } = useContext(PlateContext)
+
 	const {
 		handleOpenNewExitModal,
 		handleOpenNewPaymentModal,
@@ -32,25 +32,25 @@ export function Initial({
 	let navigate = useNavigate();
 
 	const navigateToPlateHistory = () => {
-		if (plateNumber !== "" && regexToValidatePlateNumber(plateNumber))
-			navigate(`/history/${plateNumber}`);
-		else if (!regexToValidatePlateNumber(plateNumber))
+		if (plate !== "" && regexToValidatePlateNumber(plate))
+			navigate(`/history/${plate}`);
+		else if (!regexToValidatePlateNumber(plate))
 			handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
 	};
 
 	const handleOnClickButtonToOpenPaymentModal = () => {
-		if (plateNumber !== "" && regexToValidatePlateNumber(plateNumber)) {
+		if (plate !== "" && regexToValidatePlateNumber(plate)) {
 			handleErrorMessage("");
-			handleOpenNewPaymentModal(plateNumber);
+			handleOpenNewPaymentModal(plate);
 		} else {
 			handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
 		}
 	};
 
 	const handleOnClickButtonToOpenExitModal = () => {
-		if (plateNumber !== "" && regexToValidatePlateNumber(plateNumber)) {
+		if (plate !== "" && regexToValidatePlateNumber(plate)) {
 			handleErrorMessage("");
-			handleOpenNewExitModal(plateNumber);
+			handleOpenNewExitModal(plate);
 		} else {
 			handleErrorMessage("Digite uma placa válida. ex: AAA-0000");
 		}
@@ -61,18 +61,17 @@ export function Initial({
 				<TextField
 					error={error}
 					handleErrorMessage={handleErrorMessage}
-					plateNumber={plateNumber}
-					handlePlateNumber={handlePlateNumber}
+					handlePlateNumber={updatePlate}
 				/>
 				<StyledButton
-					variant={plateNumber === "" ? "exit_primary" : "exit_primary_active"}
+					variant={plate === "" ? "exit_primary" : "exit_primary_active"}
 					onClick={handleOnClickButtonToOpenPaymentModal}
 				>
 					PAGAMENTO
 				</StyledButton>
 				<StyledButton
 					variant={
-						plateNumber === "" ? "exit_secondary" : "exit_secondary_active"
+						plate === "" ? "exit_secondary" : "exit_secondary_active"
 					}
 					onClick={handleOnClickButtonToOpenExitModal}
 				>
@@ -88,13 +87,11 @@ export function Initial({
 			</Container>
 			<PaymentModal
 				handleErrorMessage={handleErrorMessage}
-				plateNumber={plateNumber}
 				isOpen={isNewPaymentModalOpen}
 				onRequestClose={handleCloseNewPaymentModal}
 			/>
 			<ExitModal
 				handleErrorMessage={handleErrorMessage}
-				plateNumber={plateNumber}
 				isOpen={isNewExitModalOpen}
 				onRequestClose={handleCloseNewExitModal}
 			/>

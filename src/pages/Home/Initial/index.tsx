@@ -1,24 +1,24 @@
+import { useContext } from "react";
 import { StyledButton } from "../../../components/Button/Default";
 import { TextField } from "../../../components/TextField";
+import { PlateContext } from "../../../contexts/Plate";
 import { Container } from "./style";
 
 interface InitialProps {
 	error: string;
-	plateNumber: string;
-	handlePlateNumber: (newPlateNumber: string) => void;
 	handleErrorMessage: (newMessage: string) => void;
 	registerPlate: () => Promise<void>;
 }
 
 export function Initial({
-	plateNumber,
-	handlePlateNumber,
 	registerPlate,
 	error,
 	handleErrorMessage,
 }: InitialProps) {
+	const { plate, updatePlate } = useContext(PlateContext)
+
 	const handleOnClickButtonToRegisterPlate = () => {
-		if (plateNumber !== "") {
+		if (plate !== "") {
 			handleErrorMessage("");
 			registerPlate();
 		} else {
@@ -31,11 +31,10 @@ export function Initial({
 			<TextField
 				error={error}
 				handleErrorMessage={handleErrorMessage}
-				plateNumber={plateNumber}
-				handlePlateNumber={handlePlateNumber}
+				handlePlateNumber={updatePlate}
 			/>
 			<StyledButton
-				variant={plateNumber === "" ? "entrance" : "entrance_active"}
+				variant={plate === "" ? "entrance" : "entrance_active"}
 				onClick={handleOnClickButtonToRegisterPlate}
 				style={{ marginTop: "1.3rem" }}
 			>

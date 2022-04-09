@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Initial } from "./Initial";
 import { Loading } from "./Loading";
 import { Container } from "./style";
@@ -7,20 +7,19 @@ import { Success } from "./Success";
 import { api } from "../../services/api";
 import { ParkingType } from "../../types/type";
 import { regexToValidatePlateNumber } from "../../utils/regex";
+import { PlateContext } from "../../contexts/Plate";
 
 interface HomeProps {
 	error: string;
-	plateNumber: string;
-	handlePlateNumber: (newPlateNumber: string) => void;
 	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function Home({
-	plateNumber,
-	handlePlateNumber,
 	handleErrorMessage,
 	error,
 }: HomeProps) {
+	const { plate } = useContext(PlateContext)
+
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
 
@@ -30,7 +29,7 @@ export function Home({
 			.post("parking", {
 				paid: false,
 				left: false,
-				plate: plateNumber,
+				plate: plate,
 			} as ParkingType)
 			.then((data) => {
 				setLoading(false);
@@ -45,7 +44,7 @@ export function Home({
 				handleErrorMessage("");
 				setLoading(false);
 				handleErrorMessage(
-					regexToValidatePlateNumber(plateNumber)
+					regexToValidatePlateNumber(plate)
 						? "Esse veiculo ja deu entrada!"
 						: "Digite uma placa válida. ex: AAA-0000"
 				);
@@ -63,8 +62,6 @@ export function Home({
 						error={error}
 						handleErrorMessage={handleErrorMessage}
 						registerPlate={registerPlate}
-						plateNumber={plateNumber}
-						handlePlateNumber={handlePlateNumber}
 					/>
 				)}
 				{loading === true && <Loading />}

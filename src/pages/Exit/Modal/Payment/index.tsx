@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { Container } from "./style";
 
@@ -7,27 +7,28 @@ import { Loading } from "../../Loading";
 import { Success } from "../../Success";
 import { StyledButton } from "../../../../components/Button/Default";
 import { StyledButtonLink } from "../../../../components/Button/Link";
+import { PlateContext } from "../../../../contexts/Plate";
 
 interface PaymentModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
-	plateNumber: string;
 	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function PaymentModal({
 	isOpen,
 	onRequestClose,
-	plateNumber,
 	handleErrorMessage,
 }: PaymentModalProps) {
+	const { plate } = useContext(PlateContext);
+
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
 
 	const registerPlatePayment = async () => {
 		setLoading(true);
 		await api
-			.post(`parking/${plateNumber}/pay`, true)
+			.post(`parking/${plate}/pay`, true)
 			.then(() => {
 				setLoading(false);
 				setSuccess(true);
@@ -61,12 +62,10 @@ export function PaymentModal({
 				<>
 					<div className="box-info">
 						<span>Confirma o pagamento da placa abaixo?</span>
-						<span>{plateNumber}</span>
+						<span>{plate}</span>
 					</div>
 					<StyledButton
-						variant={
-							plateNumber === "" ? "exit_primary" : "exit_primary_active"
-						}
+						variant={plate === "" ? "exit_primary" : "exit_primary_active"}
 						onClick={registerPlatePayment}
 					>
 						CONFIRMAR

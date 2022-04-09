@@ -1,20 +1,22 @@
 import { Container } from "./styles";
 
 import errorShape from "../../assets/error.svg";
+import { useContext } from "react";
+import { PlateContext } from "../../contexts/Plate";
 
 interface TextFieldProps {
 	error: string;
-	plateNumber: string;
 	handlePlateNumber: (newPlateNumber: string) => void;
 	handleErrorMessage: (newMessage: string) => void;
 }
 
 export function TextField({
 	error,
-	plateNumber,
 	handleErrorMessage,
-	handlePlateNumber,
+	handlePlateNumber
 }: TextFieldProps) {
+	const { plate } = useContext(PlateContext)
+
 	const handleInputText = (text: string) => {
 		if (text.length <= 8) {
 			// Limitando a escrita da placa para 8 caracters
@@ -33,12 +35,12 @@ export function TextField({
 			<input
 				type="text"
 				placeholder="AAA-0000"
-				value={plateNumber}
+				value={plate}
 				onChange={(e) => handleInputText(e.target.value)}
 				onKeyDown={(e) => {
 					if (e.key === "-") {
 						e.preventDefault();
-						if (plateNumber.length < 4)
+						if (plate.length < 4)
 							handleErrorMessage("O carácter '-' não precisa ser digitado.");
 					}
 				}}
