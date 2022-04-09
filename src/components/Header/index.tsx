@@ -3,13 +3,13 @@ import { Container, MenuButton } from "./style";
 import avatarWhite from "../../assets/avatar_white.svg";
 import logoParking from "../../assets/logo_parking.svg";
 import shapeImg from "../../assets/Shape.svg";
+import { MenuContext } from "../../contexts/Menu";
+import { useContext } from "react";
 
-interface HeaderProps {
-	isOpenedMenu: boolean;
-	handleOpenedMenu: () => void;
-}
 
-export function Header({ isOpenedMenu, handleOpenedMenu }: HeaderProps) {
+export function Header() {
+	const { menu, updateMenu } = useContext(MenuContext)
+
 	return (
 		<Container>
 			<img className="avatar-logo-mobile" src={avatarWhite} alt="Avatar logo" />
@@ -20,8 +20,8 @@ export function Header({ isOpenedMenu, handleOpenedMenu }: HeaderProps) {
 			/>
 			<MenuButton
 				name="Button to open and close menu"
-				onClick={handleOpenedMenu}
-				isOpened={isOpenedMenu}
+				onClick={updateMenu}
+				isOpened={menu}
 			>
 				<img
 					className="first-shape"

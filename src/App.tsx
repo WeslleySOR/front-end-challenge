@@ -12,22 +12,19 @@ import { History } from "./pages/History";
 import { Home } from "./pages/Home";
 
 import GlobalContext from "./contexts";
-
-import { useMenu } from "./hooks/useMenu";
+import { useContext } from "react";
+import { MenuContext } from "./contexts/Menu";
 
 function App() {
 	globalStyles();
-	const { isOpenedMenu, handleOpenedMenu } = useMenu();
+	const { menu } = useContext(MenuContext);
 	return (
 		<GlobalContext>
 			<BrowserRouter>
 				<Container>
-					<Header
-						handleOpenedMenu={handleOpenedMenu}
-						isOpenedMenu={isOpenedMenu}
-					/>
+					<Header />
 					<Content>
-						<Main isOpenedMenu={isOpenedMenu}>
+						<Main isOpenedMenu={menu}>
 							<NavigationBar />
 							<Routes>
 								<Route index element={<Home />} />
@@ -35,10 +32,7 @@ function App() {
 								<Route path="/history/:id" element={<History />} />
 							</Routes>
 						</Main>
-						<MobileMenu
-							handleOpenedMenu={handleOpenedMenu}
-							isOpened={isOpenedMenu}
-						/>
+						<MobileMenu />
 					</Content>
 				</Container>
 			</BrowserRouter>

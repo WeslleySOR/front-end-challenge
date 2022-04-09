@@ -1,21 +1,19 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { MenuContext } from "../../contexts/Menu";
 import { Container } from "./style";
 
-interface MobileMenuProps {
-	handleOpenedMenu: () => void;
-	isOpened: boolean;
-}
-
-export function MobileMenu({ isOpened, handleOpenedMenu }: MobileMenuProps) {
+export function MobileMenu() {
+	const { menu, updateMenu } = useContext(MenuContext)
 	let navigate = useNavigate();
 
 	const handleMenuNavigate = (link: string) => {
 		navigate(link);
-		handleOpenedMenu();
+		updateMenu();
 	};
 
 	return (
-		<Container isOpened={isOpened}>
+		<Container isOpened={menu}>
 			<button onClick={() => handleMenuNavigate("/")}>
 				<span>Entrada</span>
 			</button>
