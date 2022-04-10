@@ -1,26 +1,26 @@
 import { useContext, useState } from "react";
 
-import { Container } from "./style";
-
-import { api } from "../../../../services/api";
-import { Loading } from "../../Loading";
-import { Success } from "../../Success";
-import { StyledButton } from "../../../../components/Button/Default";
-import { StyledButtonLink } from "../../../../components/Button/Link";
 import { PlateContext } from "../../../../contexts/Plate";
 import { ErrorContext } from "../../../../contexts/Error";
+
+import { StyledButton } from "../../../../components/Button/Default";
+import { StyledButtonLink } from "../../../../components/Button/Link";
+
+import { Loading } from "../../Loading";
+import { Success } from "../../Success";
+
+import { api } from "../../../../services/api";
+
+import { Container } from "./style";
 
 interface PaymentModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
 }
 
-export function PaymentModal({
-	isOpen,
-	onRequestClose
-}: PaymentModalProps) {
+export function PaymentModal({ isOpen, onRequestClose }: PaymentModalProps) {
 	const { plate } = useContext(PlateContext);
-	const { updateError } = useContext(ErrorContext)
+	const { updateError } = useContext(ErrorContext);
 
 	const [loading, setLoading] = useState(false);
 	const [success, setSuccess] = useState(false);
@@ -41,9 +41,7 @@ export function PaymentModal({
 				}, 3000);
 			})
 			.catch(() => {
-				updateError(
-					"Esse veículo já esta pago, ou já saiu do estacionamento."
-				);
+				updateError("Esse veículo já esta pago, ou já saiu do estacionamento.");
 				setLoading(false);
 				onRequestClose();
 			});

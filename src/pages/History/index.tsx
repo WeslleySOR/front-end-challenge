@@ -1,17 +1,20 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { CardDetail } from "../../components/Card/Detail";
-import { ParkingType } from "../../types/type";
-import { Container, Content, DataContent, NavigationBar } from "./style";
-
-import arrowLeft from "../../assets/arrow_l.svg";
 import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import { api } from "../../services/api";
+
 import { ErrorContext } from "../../contexts/Error";
 
+import { CardDetail } from "../../components/Card/Detail";
+
+import { api } from "../../services/api";
+
+import { ParkingType } from "../../types/type";
+
+import arrowLeft from "../../assets/arrow_l.svg";
+import { Container, Content, DataContent, NavigationBar } from "./style";
 
 export function History() {
-	const { updateError } = useContext(ErrorContext)
+	const { updateError } = useContext(ErrorContext);
 	const [plateHistory, setPlateHistory] = useState<ParkingType[]>();
 	const [data, setData] = useState<ParkingType>();
 	let navigate = useNavigate();

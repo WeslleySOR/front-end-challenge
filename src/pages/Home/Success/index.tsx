@@ -1,4 +1,5 @@
 import registerDone from "../../../assets/round-done-button.svg";
+
 import { Container } from "./style";
 
 export function Success() {

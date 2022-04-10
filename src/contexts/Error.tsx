@@ -19,15 +19,14 @@ export const ErrorContextProvider = ({ children }: ErrorContextProps) => {
 	const updateError = (newError: string) => {
 		setError(newError);
 	};
-
-    return (
-        <ErrorContext.Provider
-            value={{
-                error,
-                updateError
-            }}
-        >
-            {children}
-        </ErrorContext.Provider>
-    )
+	return (
+		<ErrorContext.Provider
+			value={{
+				error,
+				updateError,
+			}}
+		>
+			{children}
+		</ErrorContext.Provider>
+	);
 };

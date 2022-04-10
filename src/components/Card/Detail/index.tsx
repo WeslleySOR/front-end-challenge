@@ -1,4 +1,5 @@
 import { ParkingType } from "../../../types/type";
+
 import { Container } from "./styles";
 
 interface CardDetailProps extends React.HTMLAttributes<HTMLDivElement> {

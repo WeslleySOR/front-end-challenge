@@ -19,7 +19,6 @@ export const PlateContextProvider = ({ children }: PlateContextProps) => {
 	const updatePlate = (newPlate: string) => {
 		setPlate(newPlate);
 	};
-
     return (
         <PlateContext.Provider
             value={{

@@ -1,20 +1,19 @@
+import { useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { Container, Content, Main } from "./styles/app";
-import { globalStyles } from "./styles/global";
-
-import { NavigationBar } from "./components/NavigationBar";
-import { Header } from "./components/Header";
-import { MobileMenu } from "./components/Menu";
+import GlobalContext from "./contexts";
+import { MenuContext } from "./contexts/Menu";
 
 import { Exit } from "./pages/Exit";
 import { History } from "./pages/History";
 import { Home } from "./pages/Home";
 
-import GlobalContext from "./contexts";
-import { useContext } from "react";
-import { MenuContext } from "./contexts/Menu";
+import { NavigationBar } from "./components/NavigationBar";
+import { Header } from "./components/Header";
+import { MobileMenu } from "./components/Menu";
 
+import { Container, Content, Main } from "./styles/app";
+import { globalStyles } from "./styles/global";
 function App() {
 	globalStyles();
 	const { menu } = useContext(MenuContext);

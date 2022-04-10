@@ -1,14 +1,15 @@
-import { Container, MenuButton } from "./style";
+import { useContext } from "react";
+
+import { MenuContext } from "../../contexts/Menu";
 
 import avatarWhite from "../../assets/avatar_white.svg";
 import logoParking from "../../assets/logo_parking.svg";
 import shapeImg from "../../assets/Shape.svg";
-import { MenuContext } from "../../contexts/Menu";
-import { useContext } from "react";
 
+import { Container, MenuButton } from "./style";
 
 export function Header() {
-	const { menu, updateMenu } = useContext(MenuContext)
+	const { menu, updateMenu } = useContext(MenuContext);
 
 	return (
 		<Container>

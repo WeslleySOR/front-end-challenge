@@ -1,14 +1,18 @@
 import { useContext, useEffect, useState } from "react";
-import { Initial } from "./Initial";
-import { Loading } from "./Loading";
-import { Container } from "./style";
-import { Success } from "./Success";
 
-import { api } from "../../services/api";
-import { ParkingType } from "../../types/type";
-import { regexToValidatePlateNumber } from "../../utils/regex";
 import { PlateContext } from "../../contexts/Plate";
 import { ErrorContext } from "../../contexts/Error";
+
+import { regexToValidatePlateNumber } from "../../utils/regex";
+import { api } from "../../services/api";
+
+import { Initial } from "./Initial";
+import { Loading } from "./Loading";
+import { Success } from "./Success";
+
+import { ParkingType } from "../../types/type";
+
+import { Container } from "./style";
 
 export function Home() {
 	const { plate } = useContext(PlateContext);

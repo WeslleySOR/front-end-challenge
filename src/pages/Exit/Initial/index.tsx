@@ -1,19 +1,25 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { ErrorContext } from "../../../contexts/Error";
+import { PlateContext } from "../../../contexts/Plate";
+
 import { StyledButton } from "../../../components/Button/Default";
 import { StyledButtonLink } from "../../../components/Button/Link";
 import { TextField } from "../../../components/TextField";
-import { ErrorContext } from "../../../contexts/Error";
-import { PlateContext } from "../../../contexts/Plate";
-import { useModal } from "../../../hooks/useModal";
-import { regexToValidatePlateNumber } from "../../../utils/regex";
+
 import { ExitModal } from "../Modal/Exit";
 import { PaymentModal } from "../Modal/Payment";
+
+import { useModal } from "../../../hooks/useModal";
+
+import { regexToValidatePlateNumber } from "../../../utils/regex";
+
 import { Container } from "./style";
 
 export function Initial() {
-	const { plate, updatePlate } = useContext(PlateContext)
-	const { updateError } = useContext(ErrorContext)
+	const { plate, updatePlate } = useContext(PlateContext);
+	const { updateError } = useContext(ErrorContext);
 
 	const {
 		handleOpenNewExitModal,
@@ -63,9 +69,7 @@ export function Initial() {
 					PAGAMENTO
 				</StyledButton>
 				<StyledButton
-					variant={
-						plate === "" ? "exit_secondary" : "exit_secondary_active"
-					}
+					variant={plate === "" ? "exit_secondary" : "exit_secondary_active"}
 					onClick={handleOnClickButtonToOpenExitModal}
 				>
 					SAÍDA

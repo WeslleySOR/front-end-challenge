@@ -1,19 +1,20 @@
 import { useContext } from "react";
-import { StyledButton } from "../../../components/Button/Default";
-import { TextField } from "../../../components/TextField";
+
 import { ErrorContext } from "../../../contexts/Error";
 import { PlateContext } from "../../../contexts/Plate";
+
+import { StyledButton } from "../../../components/Button/Default";
+import { TextField } from "../../../components/TextField";
+
 import { Container } from "./style";
 
 interface InitialProps {
 	registerPlate: () => Promise<void>;
 }
 
-export function Initial({
-	registerPlate
-}: InitialProps) {
-	const { plate, updatePlate } = useContext(PlateContext)
-	const { updateError } = useContext(ErrorContext)
+export function Initial({ registerPlate }: InitialProps) {
+	const { plate, updatePlate } = useContext(PlateContext);
+	const { updateError } = useContext(ErrorContext);
 
 	const handleOnClickButtonToRegisterPlate = () => {
 		if (plate !== "") {

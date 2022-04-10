@@ -1,5 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
+
 import { StyledButtonLink } from "../Button/Link";
+
 import { Container } from "./style";
 
 export function NavigationBar() {

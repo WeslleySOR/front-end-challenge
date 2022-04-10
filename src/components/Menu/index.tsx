@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { MenuContext } from "../../contexts/Menu";
+
 import { Container } from "./style";
 
 export function MobileMenu() {
-	const { menu, updateMenu } = useContext(MenuContext)
+	const { menu, updateMenu } = useContext(MenuContext);
 	let navigate = useNavigate();
 
 	const handleMenuNavigate = (link: string) => {

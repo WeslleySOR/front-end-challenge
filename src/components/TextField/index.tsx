@@ -1,9 +1,11 @@
-import { Container } from "./styles";
-
-import errorShape from "../../assets/error.svg";
 import { useContext } from "react";
+
 import { PlateContext } from "../../contexts/Plate";
 import { ErrorContext } from "../../contexts/Error";
+
+import errorShape from "../../assets/error.svg";
+
+import { Container } from "./styles";
 
 interface TextFieldProps {
 	handlePlateNumber: (newPlateNumber: string) => void;
@@ -12,10 +14,10 @@ interface TextFieldProps {
 
 export function TextField({
 	handleErrorMessage,
-	handlePlateNumber
+	handlePlateNumber,
 }: TextFieldProps) {
-	const { plate } = useContext(PlateContext)
-	const { error } = useContext(ErrorContext)
+	const { plate } = useContext(PlateContext);
+	const { error } = useContext(ErrorContext);
 
 	const handleInputText = (text: string) => {
 		if (text.length <= 8) {

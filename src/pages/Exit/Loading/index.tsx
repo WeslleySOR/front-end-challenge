@@ -1,5 +1,6 @@
-import { Container } from "./style";
 import loadingImage from "../../../assets/loading.svg";
+
+import { Container } from "./style";
 
 interface LoadingProps {
 	value: string;

@@ -19,7 +19,6 @@ export const MenuContextProvider = ({ children }: MenuContextProps) => {
 	const updateMenu = () => {
 		setMenu(!menu);
 	};
-
     return (
         <MenuContext.Provider
             value={{
