@@ -4,7 +4,7 @@ export const Container = styled("div", {
 	display: "flex",
 	flexDirection: "column",
 	gap: "0.7rem",
-	span: {
+	"label, span": {
 		fontWeight: "400",
 		fontSize: "1.6rem",
 		color: "#9B9B9B",
@@ -31,7 +31,7 @@ export const Container = styled("div", {
 		borderRadius: "0.4rem",
 		"> span": {
 			color: "#000",
-			wordBreak: "break-all",
+			wordBreak: "break-words",
 		},
 	},
 	variants: {
