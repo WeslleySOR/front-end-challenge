@@ -58,7 +58,7 @@ Versões utilizadas:
 <details>
   <summary>Veículo não esta pago ( Ao tentar realizar a saída sem pagar )</summary>
   
-  ![Veículo já esta pago](./.github/paid.png)
+  ![Veículo já esta pago](./.github/not-paid.png)
 </details>
 <details>
   <summary>Veículo já saiu ( Ao tentar realizar a saída já tendo saido. )</summary>
