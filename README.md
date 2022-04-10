@@ -46,27 +46,32 @@ Versões utilizadas:
 
 ###### Algumas imagens demonstrando mensagens de erro
 <details>
-  <summary>Veículo já esta estacionado</summary>
+  <summary>Veículo já esta estacionado ( Ao tentar dar entrada de um carro que ja está estacionado )</summary>
 
   ![Veículo já esta estacionado](./.github/vehicleIn.png)
 </details>
 <details>
-  <summary>Veículo já esta pago</summary>
+  <summary>Veículo já esta pago ( Ao tentar realizar o pagamento, mesmo tendo pago )</summary>
   
   ![Veículo já esta pago](./.github/paid.png)
 </details>
 <details>
-  <summary>Veículo já saiu</summary>
+  <summary>Veículo não esta pago ( Ao tentar realizar a saída sem pagar )</summary>
+  
+  ![Veículo já esta pago](./.github/paid.png)
+</details>
+<details>
+  <summary>Veículo já saiu ( Ao tentar realizar a saída já tendo saido. )</summary>
   
   ![Veículo já saiu](./.github/it-is-not-parked.png)
 </details>
 <details>
-  <summary>Placa inválida</summary>
+  <summary>Placa inválida ( Ao tentar realizar requisição com uma placa invalida )</summary>
   
   ![Placa inválida](./.github/invalid.png)
 </details>
 <details>
-  <summary>Veículo sem histórico de entradas</summary>
+  <summary>Veículo sem histórico de entradas ( Ao tentar ver o histórico de um carro que nunca entrou no estacionamento )</summary>
   
   ![Veículo nunca entrou nesse estacionamento](./.github/nohistory.png)
 </details>
