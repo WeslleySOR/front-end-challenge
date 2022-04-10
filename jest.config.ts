@@ -1,5 +1,6 @@
 export default {
 	testEnvironment: "jsdom",
+	verbose: true,
 	transform: {
 		"^.+\\.tsx?$": "ts-jest",
 	},

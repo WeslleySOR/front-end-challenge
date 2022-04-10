@@ -11,6 +11,7 @@ import { Success } from "../../Success";
 import { api } from "../../../../services/api";
 
 import { Container } from "./style";
+import { AxiosError } from "axios";
 
 interface ExitModalProps {
 	isOpen: boolean;
@@ -39,8 +40,10 @@ export function ExitModal({ isOpen, onRequestClose }: ExitModalProps) {
 					onRequestClose();
 				}, 3000);
 			})
-			.catch(() => {
-				updateError("Esse veículo já saiu, ou ainda não realizou pagamento!");
+			.catch((error: AxiosError) => {
+				const statusCode = error.response?.status
+				if(statusCode === 404) updateError("Esse veículo já saiu, ou não tem histórico!");
+				else if(statusCode === 422) updateError("Esse veículo ainda não realizou pagamento!");
 				setLoading(false);
 				onRequestClose();
 			});

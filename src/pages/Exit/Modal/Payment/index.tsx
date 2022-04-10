@@ -41,7 +41,7 @@ export function PaymentModal({ isOpen, onRequestClose }: PaymentModalProps) {
 				}, 3000);
 			})
 			.catch(() => {
-				updateError("Esse veículo já esta pago, ou já saiu do estacionamento.");
+				updateError("Esse veículo já esta pago, já saiu, ou não tem histórico.");
 				setLoading(false);
 				onRequestClose();
 			});

@@ -13,7 +13,7 @@ describe("Home Tests", () => {
 			)
 		).toBeTruthy();
 	});
-	it("Plate Number Label is correctly", async () => {
+	it("Plate Number Label is on screen", async () => {
 		render(
 			<GlobalContext>
 				<Home />
