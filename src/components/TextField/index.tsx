@@ -33,7 +33,7 @@ export function TextField({
 	};
 	return (
 		<Container error={error !== ""}>
-			<label data-testid="number-plate-label" htmlFor="number-plate-input">Número da placa:</label>
+			<label htmlFor="number-plate-input">Número da placa:</label>
 			<input
 				id="number-plate-input"
 				type="text"
