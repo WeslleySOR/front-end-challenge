@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import Modal from 'react-modal'
+import * as Modal from 'react-modal';
 
 import { PlateContext } from "../../../../contexts/Plate";
 import { ErrorContext } from "../../../../contexts/Error";
@@ -16,8 +16,6 @@ interface PaymentModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
 }
-
-Modal.setAppElement("#root")
 
 export function PaymentModal({ isOpen, onRequestClose }: PaymentModalProps) {
 	const { plate } = useContext(PlateContext);

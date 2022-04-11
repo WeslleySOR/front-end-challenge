@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import Modal from 'react-modal'
+import * as Modal from 'react-modal';
 
 import { PlateContext } from "../../../../contexts/Plate";
 import { ErrorContext } from "../../../../contexts/Error";
@@ -17,8 +17,6 @@ interface ExitModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
 }
-
-Modal.setAppElement("#root")
 
 export function ExitModal({ isOpen, onRequestClose }: ExitModalProps) {
 	const { plate } = useContext(PlateContext);
