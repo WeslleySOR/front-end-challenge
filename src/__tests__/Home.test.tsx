@@ -13,12 +13,30 @@ describe("Home Tests", () => {
 			)
 		).toBeTruthy();
 	});
-	it("Plate Number Label is on screen", async () => {
-		render(
-			<GlobalContext>
-				<Home />
-			</GlobalContext>
-		);
-		expect(screen.getByText("Número da placa:")).toBeInTheDocument();
+	describe("Check if home components are on screen", () => {
+		it("label with text -> Número da placa:", async () => {
+			render(
+				<GlobalContext>
+					<Home />
+				</GlobalContext>
+			);
+			expect(screen.getByText("Número da placa:")).toBeInTheDocument();
+		});
+		it("input with placeholder text -> AAA-0000", async () => {
+			render(
+				<GlobalContext>
+					<Home />
+				</GlobalContext>
+			);
+			expect(screen.getByPlaceholderText("AAA-0000")).toBeInTheDocument();
+		});
+		it("button with text -> CONFIRMAR ENTRADA", async () => {
+			render(
+				<GlobalContext>
+					<Home />
+				</GlobalContext>
+			);
+			expect(screen.getByText("CONFIRMAR ENTRADA")).toBeInTheDocument();
+		});
 	});
 });
