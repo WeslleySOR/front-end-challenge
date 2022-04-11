@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import Modal from 'react-modal'
 
 import { PlateContext } from "../../../../contexts/Plate";
 import { ErrorContext } from "../../../../contexts/Error";
@@ -11,12 +12,12 @@ import { Success } from "../../Success";
 
 import { api } from "../../../../services/api";
 
-import { Container } from "./style";
-
 interface PaymentModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
 }
+
+Modal.setAppElement("#root")
 
 export function PaymentModal({ isOpen, onRequestClose }: PaymentModalProps) {
 	const { plate } = useContext(PlateContext);
@@ -47,14 +48,14 @@ export function PaymentModal({ isOpen, onRequestClose }: PaymentModalProps) {
 			});
 	};
 	return (
-		<Container
+		<Modal
+			className="payment-modal-container"
+			overlayClassName="react-modal-overlay"
+			portalClassName="PaymentPlateModal"
 			isOpen={isOpen}
 			onRequestClose={onRequestClose}
-			className="react-modal-content"
-			overlayClassName="react-modal-overlay"
 			appElement={document.getElementById("root") || undefined}
 			ariaHideApp={true}
-			portalClassName="PaymentPlateModal"
 		>
 			{loading === false && success === false && (
 				<>
@@ -75,6 +76,6 @@ export function PaymentModal({ isOpen, onRequestClose }: PaymentModalProps) {
 			)}
 			{loading === true && <Loading value="Confirmando..." />}
 			{success === true && <Success value="PAGO!" />}
-		</Container>
+		</Modal>
 	);
 }

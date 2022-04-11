@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import Modal from 'react-modal'
 
 import { PlateContext } from "../../../../contexts/Plate";
 import { ErrorContext } from "../../../../contexts/Error";
@@ -10,13 +11,14 @@ import { Success } from "../../Success";
 
 import { api } from "../../../../services/api";
 
-import { Container } from "./style";
 import { AxiosError } from "axios";
 
 interface ExitModalProps {
 	isOpen: boolean;
 	onRequestClose: () => void;
 }
+
+Modal.setAppElement("#root")
 
 export function ExitModal({ isOpen, onRequestClose }: ExitModalProps) {
 	const { plate } = useContext(PlateContext);
@@ -49,14 +51,14 @@ export function ExitModal({ isOpen, onRequestClose }: ExitModalProps) {
 			});
 	};
 	return (
-		<Container
+		<Modal
+			className="exit-modal-container"
+			overlayClassName="react-modal-overlay"
+			portalClassName="ExitPlateModal"
 			isOpen={isOpen}
 			onRequestClose={onRequestClose}
-			className="react-modal-content"
-			overlayClassName="react-modal-overlay"
 			appElement={document.getElementById("root") || undefined}
 			ariaHideApp={true}
-			portalClassName="ExitPlateModal"
 		>
 			{loading === false && success === false && (
 				<>
@@ -77,6 +79,6 @@ export function ExitModal({ isOpen, onRequestClose }: ExitModalProps) {
 			)}
 			{loading === true && <Loading value="Confirmando..." />}
 			{success === true && <Success value="SAÍDA LIBERADA" />}
-		</Container>
+		</Modal>
 	);
 }
