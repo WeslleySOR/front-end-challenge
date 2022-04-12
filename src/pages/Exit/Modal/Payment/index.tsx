@@ -53,7 +53,7 @@ export function PaymentModal({ isOpen, onRequestClose }: PaymentModalProps) {
 			isOpen={isOpen}
 			onRequestClose={onRequestClose}
 			appElement={document.getElementById("root") || undefined}
-			ariaHideApp={true}
+			ariaHideApp={false}
 		>
 			{loading === false && success === false && (
 				<>

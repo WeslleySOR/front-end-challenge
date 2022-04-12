@@ -56,7 +56,7 @@ export function ExitModal({ isOpen, onRequestClose }: ExitModalProps) {
 			isOpen={isOpen}
 			onRequestClose={onRequestClose}
 			appElement={document.getElementById("root") || undefined}
-			ariaHideApp={true}
+			ariaHideApp={false}
 		>
 			{loading === false && success === false && (
 				<>
