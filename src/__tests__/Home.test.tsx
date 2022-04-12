@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import user from '@testing-library/user-event'
 import GlobalContext from "../contexts";
 
 import { Home } from "../pages/Home/index";
@@ -37,6 +38,16 @@ describe("Home Tests", () => {
 				</GlobalContext>
 			);
 			expect(screen.getByText("CONFIRMAR ENTRADA")).toBeInTheDocument();
+		});
+		it("Error will show on click entrance button without a valid plate on input", async () => {
+			render(
+				<GlobalContext>
+					<Home />
+				</GlobalContext>
+			);
+			const paymentButton = await screen.findByText("CONFIRMAR ENTRADA");
+			await user.click(paymentButton)
+			expect(screen.getByText("Digite uma placa válida. ex: AAA-0000")).toBeInTheDocument()
 		});
 	});
 });
