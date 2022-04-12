@@ -50,13 +50,13 @@ describe("Exit Tests", () => {
 		).toBeInTheDocument();
 	});
 	it("Payment modal is open on click payment button with a valid plate", async () => {
-		const teste = render(
+		render(
 			<GlobalContext>
 				<Exit />
 			</GlobalContext>
 		);
 		const inputPlate = await screen.findByPlaceholderText("AAA-0000");
-		fireEvent.change(inputPlate, { target: { value: 'AAA-2302' } })
+		fireEvent.change(inputPlate, { target: { value: "AAA-2302" } });
 		const paymentButton = await screen.findByText("PAGAMENTO");
 		await user.click(paymentButton);
 		expect(
@@ -64,13 +64,13 @@ describe("Exit Tests", () => {
 		).toBeInTheDocument();
 	});
 	it("Exit modal is open on click exit button with a valid plate", async () => {
-		const teste = render(
+		render(
 			<GlobalContext>
 				<Exit />
 			</GlobalContext>
 		);
 		const inputPlate = await screen.findByPlaceholderText("AAA-0000");
-		fireEvent.change(inputPlate, { target: { value: 'AAA-2302' } })
+		fireEvent.change(inputPlate, { target: { value: "AAA-2302" } });
 		const exitButton = await screen.findByText("SAÍDA");
 		await user.click(exitButton);
 		expect(
